@@ -17,6 +17,7 @@ module.exports = webpackMerge(commonConfig, {
                                 minimize: true
                             }
                         },
+                        'resolve-url-loader',
                         'sass-loader'
                     ]
                 })

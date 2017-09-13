@@ -1,0 +1,37 @@
+@import '../../../assets/styles/variables';
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #fff;
+  color: $pink;
+  outline: none;
+  font-family:'Open Sans', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 7px 16px;
+
+  &:hover {
+    color: #fff;
+    background: $pink;
+    cursor: pointer;
+  }
+
+  &--wide{
+    padding: 7px 40px;
+  }
+
+  &--pink {
+    color: #fff;
+    background: $pink;
+
+    &:hover {
+      background: #fff;
+      color: $pink;
+    }
+  }
+}
+
+
+
