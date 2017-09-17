@@ -6,7 +6,7 @@
   background: #fff;
   color: $pink;
   outline: none;
-  font-family:'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   text-transform: uppercase;
   font-weight: 600;
@@ -18,8 +18,34 @@
     cursor: pointer;
   }
 
-  &--wide{
+  &--link {
+    padding: 0;
+    background: none;
+    color: $text-black;
+    text-transform: none;
+
+    &:hover, &.active {
+      color: $pink;
+      background: none;
+    }
+  }
+
+  &--narrow {
+    font-size: 14px;
+    padding: 4px 7px;
+  }
+
+  &--wide {
     padding: 7px 40px;
+  }
+
+  &--gray {
+    background: $gray;
+    color: #fff;
+
+    &:hover, &.active {
+      background: $pink;
+    }
   }
 
   &--pink {

@@ -1,0 +1,12 @@
+@import '../../../assets/styles/variables';
+
+.input {
+  display: block;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  background: $almost-black;
+  color: $text-light;
+  border-bottom: 2px solid $pink;
+  padding: 13px 20px;
+}

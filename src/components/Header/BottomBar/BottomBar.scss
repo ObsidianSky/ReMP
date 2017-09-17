@@ -1,0 +1,19 @@
+@import '../../../assets/styles/variables';
+
+.bottom-bar {
+  background: $almost-white;
+  padding: 18px 0;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 600;
+    color: $text-black;
+  }
+}

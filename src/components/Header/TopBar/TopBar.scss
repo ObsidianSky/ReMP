@@ -2,12 +2,7 @@
 
 .top-bar {
   padding: 5px 0;
-  color: $pink;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &__brand {
-    font-size: 25px;
-  }
 }

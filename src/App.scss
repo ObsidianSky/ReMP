@@ -1,9 +1,11 @@
 .app {
-  background-color: #000;
+  background-color: #fff;
   font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 
-  &__title {
-    font-size: 38px;
-    color: #fff;
+  &__main {
+    flex: 1;
   }
 }

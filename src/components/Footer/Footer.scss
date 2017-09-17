@@ -1,0 +1,11 @@
+@import '../../assets/styles/variables';
+
+.footer {
+  background: $footer-bg;
+  padding: 20px;
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
