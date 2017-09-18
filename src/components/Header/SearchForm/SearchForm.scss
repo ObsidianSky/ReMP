@@ -1,8 +1,10 @@
+@import '../../../assets/styles/variables';
+
 .search-form {
   &__title {
     margin-bottom: 20px;
     text-transform: uppercase;
-    color: #fff;
+    color: $text-light;
     font-size: 22px;
   }
 
