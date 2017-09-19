@@ -29,6 +29,7 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
+            // movies: [],
             movies: (new Array(5)).fill(movie),
             activeMovie
         }

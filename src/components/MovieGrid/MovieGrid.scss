@@ -7,6 +7,7 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  flex: 1;
 
   &__item {
     width: 30%;
@@ -16,5 +17,15 @@
       margin-left: 5%;
       margin-right: 5%;
     }
+  }
+
+  &__empty {
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: 600;
+    color: $text;
+    width: 100%;
+    text-align: center;
+    align-self: center;
   }
 }

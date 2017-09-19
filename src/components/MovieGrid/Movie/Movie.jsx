@@ -23,4 +23,11 @@ export default class Movie extends React.Component {
     }
 }
 
-Movie.propTypes = {};
+Movie.propTypes = {
+    movie: PropTypes.shape({
+        img: PropTypes.string,
+        title: PropTypes.string,
+        year: PropTypes.number,
+        genre: PropTypes.string
+    })
+};
