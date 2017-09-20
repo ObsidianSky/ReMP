@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.scss'
 
-export default class Button extends React.Component {
-    render() {
-        return (
-            <button className={`btn ${this.props.className}`} onClick={() => this.props.onClick()}>
-                {this.props.children || this.props.text}
-            </button>
-        )
-    }
-}
+const Button = ({ className, onClick, children, text}) => (
+    <button className={`btn ${className}`} onClick={onClick}>
+        {children || text}
+    </button>
+);
 
 Button.defaultProps = {
-    text: 'Default text',
-    onClick: () => console.log('default onClick')
-
+    text: ''
 };
 
 Button.propTypes = {
     text: PropTypes.string,
     onClick: PropTypes.func.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]),
 };
+
+export default Button;

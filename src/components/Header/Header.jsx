@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Header.scss'
 import PropTypes from 'prop-types';
 import TopBar from './TopBar/TopBar';
@@ -6,8 +6,7 @@ import SearchForm from './SearchForm/SearchForm';
 import BottomBar from './BottomBar/BottomBar';
 import MovieDetails from './MovieDetails/MovieDetails';
 
-export default class Header extends React.Component {
-
+class Header extends Component {
     render() {
         return (
             <header className="header">
@@ -18,11 +17,7 @@ export default class Header extends React.Component {
                                 <TopBar/>
                             </div>
                             <div className="header__content">
-                                {/*{this.props.activeMovie*/}
-                                    {/*? <MovieDetails movie={this.props.activeMovie}/>*/}
-                                    {/*: <SearchForm/>*/}
-                                {/*}*/}
-                                <MovieDetails movie={this.props.activeMovie}/>
+                                <MovieDetails {...this.props.activeMovie}/>
                                 <SearchForm/>
                             </div>
                         </div>
@@ -50,3 +45,5 @@ Header.propTypes = {
     }),
     movies: PropTypes.array
 };
+
+export default Header;

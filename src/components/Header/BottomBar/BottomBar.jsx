@@ -1,14 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import './BottomBar.scss'
 import SearchFilter from '../SearchFilter/SearchFilter';
 
-export default class BottomBar extends React.Component {
+class BottomBar extends Component {
     constructor() {
         super();
         this.state = {
             sortParams: ['release date', 'rating']
         };
+    }
+
+    sort() {
+        //sort will be here
     }
 
     render() {
@@ -19,7 +22,7 @@ export default class BottomBar extends React.Component {
                         <div className="bottom-bar__title">7 movies found</div>
                     </div>
                     <div className="bottom-bar__right">
-                        <SearchFilter filters={this.state.sortParams} type="sort"/>
+                        <SearchFilter filters={this.state.sortParams} type="sort" onSelect={this.sort}/>
                     </div>
                 </div>
             </div>
@@ -27,4 +30,4 @@ export default class BottomBar extends React.Component {
     }
 }
 
-BottomBar.propTypes = {};
+export default BottomBar;

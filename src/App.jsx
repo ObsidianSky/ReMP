@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss'
 
 import Header from './components/Header/Header';
@@ -24,12 +24,11 @@ const activeMovie = {
     cast: ['Name', 'Name2', 'Name3']
 };
 
-export default class App extends React.Component {
+class App extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            // movies: [],
             movies: (new Array(5)).fill(movie),
             activeMovie
         }
@@ -51,3 +50,5 @@ export default class App extends React.Component {
         )
     }
 }
+
+export default App;

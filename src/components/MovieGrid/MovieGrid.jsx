@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './MovieGrid.scss'
 import Movie from './Movie/Movie';
 
-export default class MovieGrid extends React.Component {
+class MovieGrid extends Component {
     getMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>
-                <Movie movie={movie}/>
+                <Movie {...movie}/>
             </div>
         ));
     }
+
     render() {
         return (
             <div className="movie-grid">
@@ -33,3 +34,5 @@ MovieGrid.propTypes = {
         })
     )
 };
+
+export default MovieGrid;

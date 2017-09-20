@@ -1,15 +1,12 @@
 import React from 'react';
 import './TopBar.scss'
-import Button from '../../common/Button/Button';
 import Logo from '../../common/Logo/Logo';
 
-export default class TopBar extends React.Component {
-    render() {
-        return (
-            <div className="top-bar">
-                <Logo/>
-                <Button>Search</Button>
-            </div>
-        )
-    }
-}
+const TopBar = () => (
+    <div className="top-bar">
+        <Logo/>
+        {/*link will be here*/}
+    </div>
+);
+
+export default TopBar;
