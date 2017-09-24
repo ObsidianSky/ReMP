@@ -3,8 +3,9 @@ import './SearchForm.scss'
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 import SearchFilter from '../SearchFilter/SearchFilter';
+import { withRouter } from 'react-router-dom'
 
-class SearchForm extends React.Component {
+class SearchForm extends Component {
     constructor() {
         super();
         this.state = {
@@ -31,7 +32,7 @@ class SearchForm extends React.Component {
     }
 
     search() {
-        //search will be here
+        this.props.history.push(`/search/${this.state.searchQuery}`)
     }
 
     render() {
@@ -40,7 +41,7 @@ class SearchForm extends React.Component {
                 <div className="search-form__title">Find your movie</div>
                 <div className="search-form__input"><Input onChange={this.onQueryChange}/></div>
                 <div className="search-form__controls">
-                    <SearchFilter filters={this.state.searchFilters} onSelect={this.onFilterChange}/>
+                    <SearchFilter filters={this.state.searchFilters} onSelect={this.onFilterChange} title="Search by"/>
                     <Button className="btn--wide btn--pink" onClick={this.search}>Search</Button>
                 </div>
             </div>
@@ -48,4 +49,4 @@ class SearchForm extends React.Component {
     }
 }
 
-export default SearchForm;
+export default withRouter(SearchForm);

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './Header.scss'
 import PropTypes from 'prop-types';
+import './Header.scss'
 import TopBar from './TopBar/TopBar';
 import SearchForm from './SearchForm/SearchForm';
 import BottomBar from './BottomBar/BottomBar';
 import MovieDetails from './MovieDetails/MovieDetails';
+import { Route, Switch } from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -17,8 +18,10 @@ class Header extends Component {
                                 <TopBar/>
                             </div>
                             <div className="header__content">
-                                <MovieDetails {...this.props.activeMovie}/>
-                                <SearchForm/>
+                                <Switch>
+                                    <Route path="/film" render={() => <MovieDetails {...this.props.activeMovie}/>}/>
+                                    <Route path="/" component={SearchForm}/>
+                                </Switch>
                             </div>
                         </div>
                     </div>

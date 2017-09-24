@@ -22,7 +22,7 @@ class BottomBar extends Component {
                         <div className="bottom-bar__title">7 movies found</div>
                     </div>
                     <div className="bottom-bar__right">
-                        <SearchFilter filters={this.state.sortParams} type="sort" onSelect={this.sort}/>
+                        <SearchFilter filters={this.state.sortParams} type="sort" onSelect={this.sort} title="Sort by"/>
                     </div>
                 </div>
             </div>
