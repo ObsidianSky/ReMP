@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SearchFilter.scss'
 import Button from '../../common/Button/Button';
@@ -8,7 +8,7 @@ const classMap = {
     sort: 'btn--link'
 };
 
-export default class SearchFilter extends React.Component {
+class SearchFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +32,7 @@ export default class SearchFilter extends React.Component {
         this.props.onSelect(filter);
         this.setState({
             active: filter
-        })
+        });
     }
 
     getFilters() {
@@ -62,9 +62,8 @@ export default class SearchFilter extends React.Component {
 }
 
 SearchFilter.defaultProps = {
-    title: 'Default title',
-    type: 'search',
-    onSelect: () => console.log('default onSelect')
+    title: '',
+    type: 'search'
 };
 
 SearchFilter.propTypes = {
@@ -73,3 +72,5 @@ SearchFilter.propTypes = {
     onSelect: PropTypes.func.isRequired,
     filters: PropTypes.arrayOf(PropTypes.string).isRequired
 };
+
+export default SearchFilter;
