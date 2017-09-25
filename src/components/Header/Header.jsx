@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
 import './Header.scss'
+
 import TopBar from './TopBar/TopBar';
 import SearchForm from './SearchForm/SearchForm';
-import BottomBar from './BottomBar/BottomBar';
+import SortBar from './SortBar/SortBar';
+import Bar from '../common/Bar/Bar';
 import MovieDetails from './MovieDetails/MovieDetails';
-import { Route, Switch } from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -27,7 +29,9 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__bottom-bar">
-                    <BottomBar/>
+                    <Route exact path="/" component={Bar}/>
+                    <Route path="/search" component={SortBar}/>
+                    <Route path="/film" render={() => <Bar title={`Films by ${this.props.activeMovie.director}`}/>}/>
                 </div>
             </header>
         )

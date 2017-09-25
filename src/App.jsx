@@ -48,6 +48,7 @@ class App extends Component{
                         <div className="app__main">
                             <Route exact path="/" render={() => <MovieGrid movies={[]}/>}/>
                             <Route path="/search" render={() => <MovieGrid movies={this.state.movies}/>}/>
+                            <Route path="/film" render={() => <MovieGrid movies={this.state.movies}/>}/>
                         </div>
                         <div className="app__footer">
                             <Footer/>
