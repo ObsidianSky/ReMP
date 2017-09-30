@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.scss'
 
 import Header from './components/Header/Header';
@@ -24,29 +25,37 @@ const activeMovie = {
     cast: ['Name', 'Name2', 'Name3']
 };
 
+const movies = (new Array(5)).fill(movie);
+
 class App extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            movies: (new Array(5)).fill(movie),
+            movies,
             activeMovie
         }
     }
 
     render() {
         return (
-            <div className="app">
-                <div className="app__header">
-                    <Header activeMovie={this.state.activeMovie} movies={this.state.movies}/>
-                </div>
-                <div className="app__main">
-                    <MovieGrid movies={this.state.movies}/>
-                </div>
-                <div className="app__footer">
-                    <Footer/>
-                </div>
-            </div>
+            <Router>
+                <Route path="/">
+                    <div className="app">
+                        <div className="app__header">
+                            <Header activeMovie={this.state.activeMovie} movies={this.state.movies}/>
+                        </div>
+                        <div className="app__main">
+                            <Route exact path="/" render={() => <MovieGrid movies={[]}/>}/>
+                            <Route path="/search" render={() => <MovieGrid movies={this.state.movies}/>}/>
+                            <Route path="/film" render={() => <MovieGrid movies={this.state.movies}/>}/>
+                        </div>
+                        <div className="app__footer">
+                            <Footer/>
+                        </div>
+                    </div>
+                </Route>
+            </Router>
         )
     }
 }
