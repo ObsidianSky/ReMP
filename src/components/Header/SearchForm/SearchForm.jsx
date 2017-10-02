@@ -1,52 +1,62 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom'
+
 import './SearchForm.scss'
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 import SearchFilter from '../SearchFilter/SearchFilter';
-import { withRouter } from 'react-router-dom'
+
+//TODO extract container logic out of component
+//container staff
+import { connect } from 'react-redux';
+import { search, setSearchQuery, setSearchType } from '../../../actionCreators';
 
 class SearchForm extends Component {
-    constructor() {
-        super();
-        this.state = {
-            searchFilters: ['Title', 'Director'],
-            activeFilter: 'Title',
-            searchQuery: ''
-        };
-
-        this.onFilterChange = this.onFilterChange.bind(this);
-        this.onQueryChange = this.onQueryChange.bind(this);
-        this.search = this.search.bind(this);
-    }
-
-    onFilterChange(filter) {
-        this.setState({
-            activeFilter: filter
-        })
-    }
-
-    onQueryChange(searchQuery) {
-        this.setState({
-            searchQuery: searchQuery
-        })
-    }
-
-    search() {
-        this.props.history.push(`/search/${this.state.searchQuery}`)
-    }
-
     render() {
         return (
             <div className="search-form">
                 <div className="search-form__title">Find your movie</div>
-                <div className="search-form__input"><Input onChange={this.onQueryChange}/></div>
+                <div className="search-form__input">
+                    <Input value={this.props.value} onChange={this.props.onSearchQueryChange}/>
+                </div>
                 <div className="search-form__controls">
-                    <SearchFilter filters={this.state.searchFilters} onSelect={this.onFilterChange} title="Search by"/>
-                    <Button className="btn--wide btn--pink" onClick={this.search}>Search</Button>
+                    <SearchFilter
+                        activeFilter={this.props.activeType}
+                        filters={this.props.searchTypes}
+                        onSelect={this.props.onSearchTypeChange}
+                        title="Search by"
+                    />
+                    <Button className="btn--wide btn--pink" onClick={this.props.onSearch}>Search</Button>
                 </div>
             </div>
         )
     }
 }
 
-export default withRouter(SearchForm);
+SearchForm.propTypes = {
+    onSearchQueryChange: PropTypes.func.isRequired,
+    onSearchTypeChange: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
+    query: PropTypes.string,
+    activeType: PropTypes.string,
+    searchTypes: PropTypes.arrayOf(PropTypes.string).isRequired
+};
+
+//container staff
+const mapStateToProps = ({ search }) => ({
+    activeType: search.activeType,
+    searchTypes: search.types,
+    query: search.query
+});
+
+export default withRouter(
+    connect(
+        mapStateToProps,
+        {
+            onSearchQueryChange: setSearchQuery,
+            onSearchTypeChange: setSearchType,
+            onSearch: search
+        }
+    )(SearchForm)
+);

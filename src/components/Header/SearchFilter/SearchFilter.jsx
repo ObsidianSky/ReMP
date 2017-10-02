@@ -9,13 +9,6 @@ const classMap = {
 };
 
 class SearchFilter extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: this.props.filters[0]
-        }
-    }
-
     getClass(filter) {
         const classes = classMap[this.props.type];
 
@@ -25,14 +18,11 @@ class SearchFilter extends Component {
     }
 
     isActive(filter) {
-        return filter === this.state.active;
+        return filter === this.props.activeFilter;
     }
 
     changeFilter(filter) {
         this.props.onSelect(filter);
-        this.setState({
-            active: filter
-        });
     }
 
     getFilters() {
@@ -70,7 +60,8 @@ SearchFilter.propTypes = {
     title: PropTypes.string,
     type: PropTypes.oneOf(['search', 'sort']),
     onSelect: PropTypes.func.isRequired,
-    filters: PropTypes.arrayOf(PropTypes.string).isRequired
+    filters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    activeFilter: PropTypes.string
 };
 
 export default SearchFilter;
