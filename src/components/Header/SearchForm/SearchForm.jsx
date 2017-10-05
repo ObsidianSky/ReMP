@@ -10,7 +10,7 @@ import SearchFilter from '../SearchFilter/SearchFilter';
 //TODO extract container logic out of component
 //container staff
 import { connect } from 'react-redux';
-import { search, setSearchQuery, setSearchType } from '../../../actionCreators';
+import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
 
 class SearchForm extends Component {
     render() {
@@ -22,7 +22,7 @@ class SearchForm extends Component {
                 </div>
                 <div className="search-form__controls">
                     <SearchFilter
-                        activeFilter={this.props.activeType}
+                        activeFilter={this.props.selectedType}
                         filters={this.props.searchTypes}
                         onSelect={this.props.onSearchTypeChange}
                         title="Search by"
@@ -39,13 +39,13 @@ SearchForm.propTypes = {
     onSearchTypeChange: PropTypes.func.isRequired,
     onSearch: PropTypes.func.isRequired,
     query: PropTypes.string,
-    activeType: PropTypes.string,
+    selectedType: PropTypes.string,
     searchTypes: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 //container staff
 const mapStateToProps = ({ search }) => ({
-    activeType: search.activeType,
+    selectedType: search.selectedType,
     searchTypes: search.types,
     query: search.query
 });
@@ -56,7 +56,7 @@ export default withRouter(
         {
             onSearchQueryChange: setSearchQuery,
             onSearchTypeChange: setSearchType,
-            onSearch: search
+            onSearch: searchMovies
         }
     )(SearchForm)
 );

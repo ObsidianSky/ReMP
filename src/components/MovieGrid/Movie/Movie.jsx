@@ -27,7 +27,7 @@ const Movie = ({ img, title, year, genre }) => (
 Movie.propTypes = {
     img: PropTypes.string,
     title: PropTypes.string,
-    year: PropTypes.number,
+    year: PropTypes.string,
     genre: PropTypes.string
 };
 

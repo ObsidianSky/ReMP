@@ -24,6 +24,15 @@ module.exports = webpackMerge(commonConfig, {
         inline: true,
         stats: {
             colors: true
+        },
+        proxy: {
+            '/api': {
+                'target': 'http://netflixroulette.net/api/api.php',
+                'pathRewrite': { '^/api': '' },
+                'changeOrigin': true,
+                'secure': false,
+                'logLevel': 'debug'
+            }
         }
     },
     module: {

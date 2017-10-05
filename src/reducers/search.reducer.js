@@ -1,6 +1,6 @@
 const initialState = {
     query: '',
-    activeType: 'title',
+    selectedType: 'title',
     types: ['title', 'director']
 };
 
@@ -9,7 +9,7 @@ export const searchReducer = (state = initialState, action) => {
         case 'SEARCH_QUERY_CHANGED':
             return Object.assign({}, state, { query: action.payload });
         case 'SEARCH_TYPE_CHANGED':
-            return Object.assign({}, state, { activeType: action.payload });
+            return Object.assign({}, state, { selectedType: action.payload });
         default:
             return state;
     }

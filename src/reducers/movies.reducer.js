@@ -3,7 +3,7 @@ export const moviesReducer = (state = [], action) => {
         case 'SORT':
             return state;
         case 'MOVIES_FETCH_SUCCESS':
-            return state;
+            return [].concat(action.payload);
         default:
             return state;
     }

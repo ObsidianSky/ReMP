@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import './MovieGrid.scss'
 import Movie from './Movie/Movie';
 
@@ -29,10 +31,12 @@ MovieGrid.propTypes = {
         PropTypes.shape({
             img: PropTypes.string,
             title: PropTypes.string,
-            year: PropTypes.number,
+            year: PropTypes.string,
             genre: PropTypes.string
         })
     )
 };
 
-export default MovieGrid;
+const mapStateToProps = state => ({ movies: state.movies });
+
+export default connect(mapStateToProps)(MovieGrid);
