@@ -2,30 +2,31 @@ import React, { Component } from 'react';
 import Bar from '../../common/Bar/Bar';
 import SearchFilter from '../SearchFilter/SearchFilter';
 
+import { connect } from 'react-redux';
+import { sort } from '../../../actions';
+
 class BottomBar extends Component {
-    constructor() {
-        super();
-        this.state = {
-            sortParams: ['release date', 'rating'],
-            moviesAmount: 7
-        };
-    }
-
-    sort() {
-        //sort will be here
-    }
-
     render() {
-        return (
-            <Bar title={`${this.state.moviesAmount} movies found`}>
-                {this.state.moviesAmount &&
-                    <SearchFilter filters={this.state.sortParams}
-                                  type="sort" onSelect={this.sort}
+        if(this.props.moviesAmount) {
+            return (
+                <Bar title={`${this.props.moviesAmount} movies found`}>
+                    <SearchFilter filters={this.props.sortTypes}
+                                  type="sort"
+                                  activeFilter={this.props.selectedSortType}
+                                  onSelect={this.props.sort}
                                   title="Sort by"/>
-                }
-            </Bar>
-        )
+                </Bar>
+            );
+        } else {
+            return <Bar/>;
+        }
     }
 }
 
-export default BottomBar;
+const mapStateToProps = ({ movies }) => ({
+    moviesAmount: movies.items.length,
+    sortTypes: movies.sortTypes,
+    selectedSortType: movies.selectedSortType
+});
+
+export default connect(mapStateToProps, { sort } )(BottomBar);

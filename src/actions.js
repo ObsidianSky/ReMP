@@ -1,17 +1,21 @@
 import { getMovies } from './services/movie.service';
+import createHistory from 'history/createBrowserHistory'
 
-export const setSearchQuery = value => ({
+const history = createHistory();
+
+export const setSearchQuery = query => ({
     type: 'SEARCH_QUERY_CHANGED',
-    payload: value
+    payload: query
 });
 
-export const setSearchType = value => ({
+export const setSearchType = type => ({
     type: 'SEARCH_TYPE_CHANGED',
-    payload: value
+    payload: type
 });
 
-export const search = () => ({
-    type: 'SEARCH',
+export const sort = type => ({
+    type: 'SORT',
+    payload: type
 });
 
 export const searchMovies = () => {
@@ -19,10 +23,19 @@ export const searchMovies = () => {
         const { search } = getState();
 
         getMovies(search.selectedType, search.query)
-            .then(movies => dispatch({
-                type: 'MOVIES_FETCH_SUCCESS',
-                payload: movies
-            }))
-            .catch(e => console.log(e))
+            .then(movies => {
+                dispatch({
+                    type: 'MOVIES_FETCH_SUCCESS',
+                    payload: movies
+                });
+                history.push(`/search/${search.query}`);
+            })
+            .catch(e => {
+                dispatch({
+                    type: 'MOVIES_FETCH_ERROR',
+                    payload: e.response.data.message
+                });
+                history.push(`/search/${search.query}`);
+            });
     }
 };

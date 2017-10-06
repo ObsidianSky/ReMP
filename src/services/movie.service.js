@@ -7,7 +7,8 @@ const requiredFieldsMap = {
     img: 'poster',
     title: 'show_title',
     year: 'release_year',
-    genre: 'category'
+    genre: 'category',
+    rating: 'rating'
 };
 
 const prepareMovie = movie => {
@@ -20,5 +21,9 @@ const prepareMovie = movie => {
 
 export const getMovies = (param, query) => {
   return axios.get(apiUrl, { params: { [param]: query } })
-      .then(res => res.data && res.data.map(prepareMovie));
+      .then(res => {
+          return Array.isArray(res.data)
+                    ? res.data.map(prepareMovie)
+                    : prepareMovie(res.data);
+      });
 };

@@ -37,6 +37,6 @@ MovieGrid.propTypes = {
     )
 };
 
-const mapStateToProps = state => ({ movies: state.movies });
+const mapStateToProps = state => ({ movies: state.movies.items });
 
 export default connect(mapStateToProps)(MovieGrid);

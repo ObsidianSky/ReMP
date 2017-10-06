@@ -18,7 +18,7 @@ class SearchFilter extends Component {
     }
 
     isActive(filter) {
-        return filter === this.props.activeFilter;
+        return filter.value === this.props.activeFilter;
     }
 
     changeFilter(filter) {
@@ -29,10 +29,10 @@ class SearchFilter extends Component {
         return this.props.filters
             .map((filter, index) =>
                 <Button className={this.getClass(filter)}
-                        onClick={() => this.changeFilter(filter)}
+                        onClick={() => this.changeFilter(filter.value)}
                         key={index}
                 >
-                    {filter}
+                    {filter.label}
                 </Button>
             )
     }
@@ -60,7 +60,10 @@ SearchFilter.propTypes = {
     title: PropTypes.string,
     type: PropTypes.oneOf(['search', 'sort']),
     onSelect: PropTypes.func.isRequired,
-    filters: PropTypes.arrayOf(PropTypes.string).isRequired,
+    filters: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.string
+    })).isRequired,
     activeFilter: PropTypes.string
 };
 

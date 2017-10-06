@@ -13,10 +13,21 @@ import { connect } from 'react-redux';
 import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
 
 class SearchForm extends Component {
+    constructor(props) {
+        super(props);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+    }
+
+    onFormSubmit(e) {
+        e.preventDefault();
+        this.props.onSearch();
+    }
+
     render() {
         return (
-            <div className="search-form">
+            <form className="search-form" onSubmit={this.onFormSubmit}>
                 <div className="search-form__title">Find your movie</div>
+                <div className="search-form__error">{this.props.error}</div>
                 <div className="search-form__input">
                     <Input value={this.props.value} onChange={this.props.onSearchQueryChange}/>
                 </div>
@@ -29,7 +40,7 @@ class SearchForm extends Component {
                     />
                     <Button className="btn--wide btn--pink" onClick={this.props.onSearch}>Search</Button>
                 </div>
-            </div>
+            </form>
         )
     }
 }
@@ -39,15 +50,20 @@ SearchForm.propTypes = {
     onSearchTypeChange: PropTypes.func.isRequired,
     onSearch: PropTypes.func.isRequired,
     query: PropTypes.string,
+    error: PropTypes.string,
     selectedType: PropTypes.string,
-    searchTypes: PropTypes.arrayOf(PropTypes.string).isRequired
+    searchTypes: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.string
+    })).isRequired
 };
 
 //container staff
 const mapStateToProps = ({ search }) => ({
     selectedType: search.selectedType,
     searchTypes: search.types,
-    query: search.query
+    query: search.query,
+    error: search.error
 });
 
 export default withRouter(

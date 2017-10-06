@@ -8,6 +8,12 @@
     font-size: 22px;
   }
 
+  &__error {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: $red-pink;
+  }
+
   &__input {
     margin-bottom: 15px;
   }

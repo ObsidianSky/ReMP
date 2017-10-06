@@ -21,7 +21,7 @@ class Header extends Component {
                             </div>
                             <div className="header__content">
                                 <Switch>
-                                    <Route path="/film" render={() => <MovieDetails {...this.props.activeMovie}/>}/>
+                                    <Route path="/film" component={MovieDetails}/>
                                     <Route path="/" component={SearchForm}/>
                                 </Switch>
                             </div>
@@ -29,7 +29,7 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__bottom-bar">
-                    <Route exact path="/" component={Bar}/>
+                    <Route exact path="/" component={SortBar}/>
                     <Route path="/search" component={SortBar}/>
                     <Route path="/film" render={() => <Bar title={`Films by ${this.props.activeMovie.director}`}/>}/>
                 </div>
@@ -37,20 +37,5 @@ class Header extends Component {
         )
     }
 }
-
-Header.propTypes = {
-    activeMovie: PropTypes.shape({
-        img: PropTypes.string,
-        title: PropTypes.string,
-        year: PropTypes.number,
-        genre: PropTypes.string,
-        rating: PropTypes.number,
-        duration: PropTypes.number,
-        description: PropTypes.string,
-        director: PropTypes.string,
-        cast: PropTypes.arrayOf(PropTypes.string)
-    }),
-    movies: PropTypes.array
-};
 
 export default Header;

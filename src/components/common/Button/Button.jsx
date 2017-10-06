@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Button.scss'
 
 const Button = ({ className, onClick, children, text}) => (
-    <button className={`btn ${className}`} onClick={onClick}>
+    <button className={`btn ${className}`} onClick={onClick} type="button">
         {children || text}
     </button>
 );
@@ -19,7 +19,7 @@ Button.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
-    ]),
+    ])
 };
 
 export default Button;

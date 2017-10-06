@@ -5,13 +5,13 @@ import './Movie.scss'
 
 const Movie = ({ img, title, year, genre }) => (
     <div className="movie">
-        <Link to={`/film/${title}`}>
+        <Link className="movie__image-link" to={`/film/${title}`}>
             <img className="movie__image" src={img}></img>
         </Link>
         <div className="movie__info">
             <div className="movie__info-row">
                 <div className="movie__title">
-                    <Link to={`/film/${title}`}>
+                    <Link to={`/film/${title}`} title={title} >
                         {title}
                     </Link>
                 </div>
