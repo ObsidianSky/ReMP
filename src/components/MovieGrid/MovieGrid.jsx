@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 
 import './MovieGrid.scss'
 import Movie from './Movie/Movie';
+import { selectMovie } from "../../actions";
 
 class MovieGrid extends Component {
     getMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>
-                <Movie {...movie}/>
+                {/*TODO think how get rid of bind*/}
+                <Movie {...movie} onMovieClick={this.props.selectMovie.bind(null, movie.id)}/>
             </div>
         ));
     }
@@ -39,4 +41,4 @@ MovieGrid.propTypes = {
 
 const mapStateToProps = state => ({ movies: state.movies.items });
 
-export default connect(mapStateToProps)(MovieGrid);
+export default connect(mapStateToProps, { selectMovie })(MovieGrid);

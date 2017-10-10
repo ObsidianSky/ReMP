@@ -4,7 +4,8 @@ const initialState = {
     sortTypes: [
         { label: 'release date', value: 'year' },
         { label: 'rating', value: 'rating' }
-    ]
+    ],
+    selectedMovie: null
 };
 
 const sortMovies = (type, movies) => {
@@ -29,6 +30,8 @@ export const moviesReducer = (state = initialState, action) => {
             });
         case 'MOVIES_FETCH_SUCCESS':
             return Object.assign({}, state, { items: [].concat(action.payload)});
+        case 'SELECT_MOVIE':
+            return Object.assign({}, state, { selectedMovie: state.items.find(movie => movie.id === action.payload)});
         default:
             return state;
     }

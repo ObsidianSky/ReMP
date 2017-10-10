@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
 import './Movie.scss'
 
-const Movie = ({ img, title, year, genre }) => (
+const Movie = ({ img, title, year, genre, onMovieClick }) => (
     <div className="movie">
-        <Link className="movie__image-link" to={`/film/${title}`}>
-            <img className="movie__image" src={img}></img>
-        </Link>
+        {/*TODO rename class*/}
+        <div className="movie__image-link" onClick={onMovieClick}>
+            <img className="movie__image" src={img}/>
+        </div>
         <div className="movie__info">
             <div className="movie__info-row">
-                <div className="movie__title">
-                    <Link to={`/film/${title}`} title={title} >
-                        {title}
-                    </Link>
+                <div className="movie__title" title={title} onClick={onMovieClick}>
+                    {title}
                 </div>
                 <div className="movie__year">{year}</div>
             </div>
@@ -28,7 +26,8 @@ Movie.propTypes = {
     img: PropTypes.string,
     title: PropTypes.string,
     year: PropTypes.string,
-    genre: PropTypes.string
+    genre: PropTypes.string,
+    onMovieClick: PropTypes.func
 };
 
 export default Movie;
