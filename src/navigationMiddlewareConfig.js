@@ -1,15 +1,10 @@
-import createHistory from 'history/createBrowserHistory'
-const history = createHistory();
-
 export default [
     {
-        actionName: ['MOVIES_FETCH_SUCCESS', 'MOVIES_FETCH_ERROR'],
-        handler: (storeState) => history.push(`/search/${storeState.search.query}`)
+        actionName: 'MOVIES_SEARCHED',
+        handler: (storeState) => storeState.history.push(`/search/${storeState.search.query}`)
     },
     {
-        actionName: 'SELECT_MOVIE',
-        handler: (storeState) => {
-            history.push(`/film/${storeState.movies.selectedMovie.title}`)
-        }
+        actionName: 'MOVIE_SELECTED',
+        handler: (storeState) => storeState.history.push(`/film/${storeState.movies.selectedMovie.title}`)
     }
 ]

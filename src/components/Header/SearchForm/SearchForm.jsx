@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom'
 
 import './SearchForm.scss'
 import Input from '../../common/Input/Input';
@@ -29,7 +28,7 @@ class SearchForm extends Component {
                 <div className="search-form__title">Find your movie</div>
                 <div className="search-form__error">{this.props.error}</div>
                 <div className="search-form__input">
-                    <Input value={this.props.value} onChange={this.props.onSearchQueryChange}/>
+                    <Input value={this.props.query} onChange={this.props.onSearchQueryChange}/>
                 </div>
                 <div className="search-form__controls">
                     <SearchFilter
@@ -66,13 +65,10 @@ const mapStateToProps = ({ search }) => ({
     error: search.error
 });
 
-export default withRouter(
-    connect(
-        mapStateToProps,
-        {
-            onSearchQueryChange: setSearchQuery,
-            onSearchTypeChange: setSearchType,
-            onSearch: searchMovies
-        }
-    )(SearchForm)
-);
+const mapDispatchToProps = {
+    onSearchQueryChange: setSearchQuery,
+    onSearchTypeChange: setSearchType,
+    onSearch: searchMovies
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { searchReducer, moviesReducer} from './reducers'
+import { searchReducer, moviesReducer, historyReducer} from './reducers'
 
 export default combineReducers({
     movies: moviesReducer,
-    search: searchReducer
+    search: searchReducer,
+    history: historyReducer
 });

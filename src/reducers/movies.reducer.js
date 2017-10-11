@@ -32,6 +32,8 @@ export const moviesReducer = (state = initialState, action) => {
             return Object.assign({}, state, { items: [].concat(action.payload)});
         case 'SELECT_MOVIE':
             return Object.assign({}, state, { selectedMovie: state.items.find(movie => movie.id === action.payload)});
+        case 'REMOVE_MOVIE':
+            return Object.assign({}, state, { items: state.items.filter(movie => movie.id !== action.payload) });
         default:
             return state;
     }

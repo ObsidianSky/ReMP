@@ -34,7 +34,9 @@ MovieGrid.propTypes = {
             img: PropTypes.string,
             title: PropTypes.string,
             year: PropTypes.string,
-            genre: PropTypes.string
+            genre: PropTypes.string,
+            director: PropTypes.string,
+            rating: PropTypes.string,
         })
     )
 };

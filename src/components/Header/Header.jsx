@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import './Header.scss'
 
@@ -29,9 +28,10 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__bottom-bar">
-                    <Route exact path="/" component={SortBar}/>
-                    <Route path="/search" component={SortBar}/>
-                    <Route path="/film" render={() => <Bar title={`Films by ${this.props.activeMovie.director}`}/>}/>
+                    <Switch>
+                        <Route path="/film" component={Bar}/>
+                        <Route path="/" component={SortBar}/>
+                    </Switch>
                 </div>
             </header>
         )

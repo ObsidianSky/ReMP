@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MovieDetails.scss'
 
+import { connect } from 'react-redux';
+
 const MovieDetails = ({
     img,
     title,
@@ -46,4 +48,6 @@ MovieDetails.propTypes = {
     cast: PropTypes.string
 };
 
-export default MovieDetails;
+const mapStateToProps = ({ movies }) => ({ ...movies.selectedMovie });
+
+export default connect(mapStateToProps)(MovieDetails);
