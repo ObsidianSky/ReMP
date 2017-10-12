@@ -3,7 +3,7 @@ import Bar from '../../common/Bar/Bar';
 import SearchFilter from '../SearchFilter/SearchFilter';
 
 import { connect } from 'react-redux';
-import { sort } from '../../../actions';
+import { sortMovies } from '../../../actions';
 
 class BottomBar extends Component {
     render() {
@@ -13,7 +13,7 @@ class BottomBar extends Component {
                     <SearchFilter filters={this.props.sortTypes}
                                   type="sort"
                                   activeFilter={this.props.selectedSortType}
-                                  onSelect={this.props.sort}
+                                  onSelect={this.props.sortMovies}
                                   title="Sort by"/>
                 </Bar>
             );
@@ -29,4 +29,4 @@ const mapStateToProps = ({ movies }) => ({
     selectedSortType: movies.selectedSortType
 });
 
-export default connect(mapStateToProps, { sort } )(BottomBar);
+export default connect(mapStateToProps, { sortMovies } )(BottomBar);

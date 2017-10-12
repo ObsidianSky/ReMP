@@ -1,3 +1,6 @@
+import {REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES} from '../actions/';
+import {MOVIES_FETCH_SUCCESS} from '../actions/';
+
 const initialState = {
     items: [],
     selectedSortType: 'year',
@@ -23,16 +26,16 @@ const sortMovies = (type, movies) => {
 
 export const moviesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SORT':
+        case SORT_MOVIES:
             return Object.assign({}, state, {
                 items: sortMovies(action.payload, state.items),
                 selectedSortType: action.payload
             });
-        case 'MOVIES_FETCH_SUCCESS':
+        case MOVIES_FETCH_SUCCESS:
             return Object.assign({}, state, { items: [].concat(action.payload)});
-        case 'SELECT_MOVIE':
+        case SELECT_MOVIE:
             return Object.assign({}, state, { selectedMovie: state.items.find(movie => movie.id === action.payload)});
-        case 'REMOVE_MOVIE':
+        case REMOVE_MOVIE:
             return Object.assign({}, state, { items: state.items.filter(movie => movie.id !== action.payload) });
         default:
             return state;

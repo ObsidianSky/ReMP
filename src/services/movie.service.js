@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { onMoviesFetchError, onMoviesFetchSuccess } from '../actions/';
 
 const apiUrl = '/api';
 
@@ -25,11 +26,22 @@ const prepareMovie = movie => {
   return preparedMovie;
 };
 
-export const fetchMovies = (param, query) => {
+const fetchMovies = (param, query) => {
   return axios.get(apiUrl, { params: { [param]: query } })
       .then(res => {
           return Array.isArray(res.data)
                     ? res.data.map(prepareMovie)
                     : prepareMovie(res.data);
       });
+};
+
+export const getMovies = (dispatch, type, query) => {
+    return fetchMovies(type, query)
+        .then(movies => {
+            dispatch(onMoviesFetchSuccess(movies))
+        })
+        .catch(e => {
+            dispatch(onMoviesFetchError(e));
+            throw e;
+        })
 };

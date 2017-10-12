@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './MovieGrid.scss'
 import Movie from './Movie/Movie';
-import { selectMovie } from "../../actions";
+import { selectMovie } from '../../actions';
 
 class MovieGrid extends Component {
     getMovies() {
