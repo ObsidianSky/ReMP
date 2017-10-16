@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 
 import './MovieGrid.scss'
 import Movie from './Movie/Movie';
-import { selectMovie } from '../../actions';
+import { showMovieDetails } from '../../actions';
 
 class MovieGrid extends Component {
-    getMovies() {
+    buildMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>
                 {/*TODO think how get rid of bind*/}
-                <Movie {...movie} onMovieClick={this.props.selectMovie.bind(null, movie.id)}/>
+                <Movie {...movie} onMovieClick={this.props.showMovieDetails.bind(null, movie.id)}/>
             </div>
         ));
     }
@@ -20,7 +20,7 @@ class MovieGrid extends Component {
         return (
             <div className="movie-grid">
                 {this.props.movies.length > 0
-                    ? this.getMovies()
+                    ? this.buildMovies()
                     : <div className="movie-grid__empty">No movies here</div>
                 }
             </div>
@@ -35,7 +35,6 @@ MovieGrid.propTypes = {
             title: PropTypes.string,
             year: PropTypes.string,
             genre: PropTypes.string,
-            director: PropTypes.string,
             rating: PropTypes.string,
         })
     )
@@ -43,4 +42,4 @@ MovieGrid.propTypes = {
 
 const mapStateToProps = state => ({ movies: state.movies.items });
 
-export default connect(mapStateToProps, { selectMovie })(MovieGrid);
+export default connect(mapStateToProps, { showMovieDetails })(MovieGrid);

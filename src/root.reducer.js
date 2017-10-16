@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import { searchReducer, moviesReducer, historyReducer} from './reducers'
+import { searchReducer, moviesReducer, historyReducer, genresReducer } from './reducers'
 
 export default combineReducers({
     movies: moviesReducer,
     search: searchReducer,
-    history: historyReducer
+    history: historyReducer,
+    genres: genresReducer
 });

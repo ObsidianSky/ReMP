@@ -8,6 +8,9 @@
   &__image-link {
     flex: 1 0 auto;
     margin-bottom: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   &__image {
@@ -17,7 +20,8 @@
   &__info-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6px;
+    align-items: center;
+    margin-bottom: 8px;
   }
 
   &__title {
@@ -29,12 +33,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    a {
-      text-decoration: none;
-      font-size: inherit;
-      color: inherit;
-    }
+    cursor: pointer;
   }
 
   &__year {
@@ -48,5 +47,16 @@
   &__genre {
     font-size: 14px;
     color: $text;
+  }
+
+  &__rating {
+    color: $green;
+    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid $green;
   }
 }

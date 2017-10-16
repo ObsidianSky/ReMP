@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './SearchForm.scss'
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
-import SearchFilter from '../SearchFilter/SearchFilter';
+import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
 
-//TODO extract container logic out of component
-//container staff
-import { connect } from 'react-redux';
 import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
 
 class SearchForm extends Component {
@@ -31,9 +29,9 @@ class SearchForm extends Component {
                     <Input value={this.props.query} onChange={this.props.onSearchQueryChange}/>
                 </div>
                 <div className="search-form__controls">
-                    <SearchFilter
-                        activeFilter={this.props.selectedType}
-                        filters={this.props.searchTypes}
+                    <RadioButtonGroup
+                        activeOption={this.props.selectedType}
+                        options={this.props.searchTypes}
                         onSelect={this.props.onSearchTypeChange}
                         title="Search by"
                     />
@@ -57,7 +55,6 @@ SearchForm.propTypes = {
     })).isRequired
 };
 
-//container staff
 const mapStateToProps = ({ search }) => ({
     selectedType: search.selectedType,
     searchTypes: search.types,

@@ -1,5 +1,4 @@
-import {REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES} from '../actions/';
-import {MOVIES_FETCH_SUCCESS} from '../actions/';
+import { REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES, UPDATE_MOVIES, RESET_MOVIES } from '../actions/';
 
 const initialState = {
     items: [],
@@ -31,12 +30,14 @@ export const moviesReducer = (state = initialState, action) => {
                 items: sortMovies(action.payload, state.items),
                 selectedSortType: action.payload
             });
-        case MOVIES_FETCH_SUCCESS:
-            return Object.assign({}, state, { items: [].concat(action.payload)});
+        case UPDATE_MOVIES:
+            return Object.assign({}, state, { items: [].concat(action.payload) });
         case SELECT_MOVIE:
-            return Object.assign({}, state, { selectedMovie: state.items.find(movie => movie.id === action.payload)});
+            return Object.assign({}, state, { selectedMovie: action.payload });
         case REMOVE_MOVIE:
             return Object.assign({}, state, { items: state.items.filter(movie => movie.id !== action.payload) });
+        case RESET_MOVIES:
+            return Object.assign({}, initialState);
         default:
             return state;
     }

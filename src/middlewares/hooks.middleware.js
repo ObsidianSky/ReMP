@@ -1,4 +1,4 @@
-export const createNavigationMiddleware = (configList) => {
+export const createHooksMiddleware = configList => {
     return store => next => action => {
         const config = configList.find(config => {
             return Array.isArray(config.actionName)
@@ -6,10 +6,14 @@ export const createNavigationMiddleware = (configList) => {
                 : config.actionName === action.type;
         });
 
+        if (config && config.before) {
+            config.before(store.getState(), store.dispatch);
+        }
+
         const result = next(action);
 
-        if (config) {
-            config.handler(store.getState());
+        if (config && config.after) {
+            config.after(store.getState(), store.dispatch);
         }
 
         return result;

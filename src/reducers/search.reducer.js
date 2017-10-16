@@ -1,7 +1,6 @@
-import { SET_SEARCH_QUERY, SET_SEARCH_TYPE, MOVIES_FETCH_ERROR, MOVIES_FETCH_SUCCESS } from '../actions/';
+import { SET_SEARCH_QUERY, SET_SEARCH_TYPE, RESET_SEARCH } from '../actions/';
 
 const initialState = {
-    error: '',
     query: '',
     selectedType: 'title',
     types: [
@@ -15,11 +14,9 @@ export const searchReducer = (state = initialState, action) => {
         case SET_SEARCH_QUERY:
             return Object.assign({}, state, { query: action.payload });
         case SET_SEARCH_TYPE:
-            return Object.assign({}, state, { selectedType: action.payload, error: '' });
-        case MOVIES_FETCH_SUCCESS:
-            return Object.assign({}, state, { error: '' });
-        case MOVIES_FETCH_ERROR:
-            return Object.assign({}, state, { error: action.payload });
+            return Object.assign({}, state, { selectedType: action.payload });
+        case RESET_SEARCH:
+            return Object.assign({}, initialState);
         default:
             return state;
     }

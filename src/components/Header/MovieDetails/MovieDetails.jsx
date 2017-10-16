@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './MovieDetails.scss'
-
 import { connect } from 'react-redux';
+
+import './MovieDetails.scss'
 
 const MovieDetails = ({
     img,
@@ -30,7 +30,7 @@ const MovieDetails = ({
                 <div className="movie-details__duration">{duration}</div>
             </div>
             <div className="movie-details__description">{description}</div>
-            <div className="movie-details__director">Director: {director}</div>
+            <div className="movie-details__director">Director: {director && director.name}</div>
             <div className="movie-details__cast">Cast: {cast}</div>
         </div>
     </div>
@@ -44,7 +44,9 @@ MovieDetails.propTypes = {
     rating: PropTypes.string,
     duration: PropTypes.string,
     description: PropTypes.string,
-    director: PropTypes.string,
+    director: PropTypes.shape({
+        name: PropTypes.string
+    }),
     cast: PropTypes.string
 };
 

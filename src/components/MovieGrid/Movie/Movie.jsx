@@ -17,12 +17,6 @@ const Movie = ({ img, title, year, genre, director, rating, onMovieClick }) => (
             </div>
             <div className="movie__info-row">
                 <div className="movie__genre">{genre}</div>
-            </div>
-            {/*TODO style new fields somehow*/}
-            <div className="movie__info-row">
-                <div className="movie__director">{director}</div>
-            </div>
-            <div className="movie__info-row">
                 <div className="movie__rating">{rating}</div>
             </div>
         </div>
@@ -34,7 +28,6 @@ Movie.propTypes = {
     title: PropTypes.string,
     year: PropTypes.string,
     genre: PropTypes.string,
-    director: PropTypes.string,
     rating: PropTypes.string,
     onMovieClick: PropTypes.func
 };

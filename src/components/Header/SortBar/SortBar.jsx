@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Bar from '../../common/Bar/Bar';
-import SearchFilter from '../SearchFilter/SearchFilter';
-
 import { connect } from 'react-redux';
-import { sortMovies } from '../../../actions';
 
-class BottomBar extends Component {
-    render() {
-        if(this.props.moviesAmount) {
-            return (
-                <Bar title={`${this.props.moviesAmount} movies found`}>
-                    <SearchFilter filters={this.props.sortTypes}
+import { sortMovies } from '../../../actions';
+import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
+
+const BottomBar = ({ moviesAmount, sortTypes, selectedSortType, sortMovies }) => {
+    if (moviesAmount) {
+        return (
+            <Bar title={`${moviesAmount} movies found`}>
+                <RadioButtonGroup options={sortTypes}
                                   type="sort"
-                                  activeFilter={this.props.selectedSortType}
-                                  onSelect={this.props.sortMovies}
+                                  activeOption={selectedSortType}
+                                  onSelect={sortMovies}
                                   title="Sort by"/>
-                </Bar>
-            );
-        } else {
-            return <Bar/>;
-        }
+            </Bar>
+        );
+    } else {
+        return <Bar/>;
     }
-}
+};
 
 const mapStateToProps = ({ movies }) => ({
     moviesAmount: movies.items.length,
@@ -29,4 +27,4 @@ const mapStateToProps = ({ movies }) => ({
     selectedSortType: movies.selectedSortType
 });
 
-export default connect(mapStateToProps, { sortMovies } )(BottomBar);
+export default connect(mapStateToProps, { sortMovies })(BottomBar);

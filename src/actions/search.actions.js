@@ -1,8 +1,12 @@
-import { getMovies } from '../services/movie.service';
+import { getMoviesSearchResult } from '../services/tmdb.service';
+import { mapGenresOnMovies } from '../services/mapper.service';
 import { sortMovies } from './movies.actions';
+import { updateMovies } from './common.actions';
+import { NAVIGATE_TO_SEARCH_RESULTS } from './navigation.actions';
 
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SEARCH_TYPE = 'SET_SEARCH_TYPE';
+export const RESET_SEARCH = 'RESET_SEARCH';
 
 export const setSearchQuery = query => ({
     type: SET_SEARCH_QUERY,
@@ -14,22 +18,25 @@ export const setSearchType = type => ({
     payload: type
 });
 
+export const resetSearch = () => ({
+    type: RESET_SEARCH
+});
 
 export const searchMovies = () => {
     return (dispatch, getState) => {
-        const { search, movies } = getState();
+        const state = getState();
 
-        getMovies(dispatch, search.selectedType, search.query)
-            .then(
-                () => {
-                    dispatch(sortMovies(movies.selectedSortType));
-                    dispatch({type: 'MOVIE_SEARCHED'})
+        getMoviesSearchResult(state.search.query, state.search.selectedType)
+            .then(result => {
+                    const movies = mapGenresOnMovies(result, state.genres);
+                    dispatch(updateMovies(movies));
+                    dispatch(sortMovies(state.movies.selectedSortType));
+                    dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
             .catch(() => {
-                dispatch({ type: 'MOVIE_SEARCHED' })
+                dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });
-
     }
 };
 

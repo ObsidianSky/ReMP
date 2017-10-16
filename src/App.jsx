@@ -7,13 +7,13 @@ import './App.scss'
 import Header from './components/Header/Header';
 import MovieGrid from './components/MovieGrid/MovieGrid';
 import Footer from './components/Footer/Footer';
-import { setHistory } from './actions';
+import { setHistory, requestGenres } from './actions';
 
-
-class App extends Component{
+class App extends Component {
     componentDidMount() {
-        const { setHistory, history } = this.props;
+        const { setHistory, requestGenres, history } = this.props;
         setHistory(history);
+        requestGenres();
     }
 
     render() {
@@ -35,4 +35,4 @@ class App extends Component{
     }
 }
 
-export default withRouter(connect(null, { setHistory })(App));
+export default withRouter(connect(null, { setHistory, requestGenres })(App));
