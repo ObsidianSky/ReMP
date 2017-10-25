@@ -30,7 +30,7 @@ const searchResultTransformMap = Object.assign({}, basicTransformMap, {
 const detailsResultTransformMap = Object.assign({}, basicTransformMap, {
     genre: 'genres',
     director({ credits }) {
-        return credits.crew.find(person => person.job === 'Director')
+        return credits.crew.find(movie => movie.job === 'Director')
 
     },
     cast({ credits }) {

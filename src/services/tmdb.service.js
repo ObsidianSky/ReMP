@@ -23,7 +23,7 @@ export const getGenreList = () => {
 
 export const getMoviesByDirectorId = id => {
     return get(`/person/${id}/movie_credits`)
-        .then(data => data.cast.map(prepareSearchResp));
+        .then(data => data.crew.filter(movie => movie.job === 'Director').map(prepareSearchResp));
 };
 
 export const getMovieById = id => {
@@ -34,14 +34,26 @@ export const getMovieById = id => {
 
 const searchMoviesByTitle = query => {
     return get(movieSearchPath, { query })
-        .then(data => data.results.map(prepareSearchResp));
+        .then(data => {
+
+            if(!data.results.length) {
+                throw `No movies found for ${query}`
+            }
+
+            return data.results.map(prepareSearchResp)
+        });
 };
 
 const searchMoviesByDirectorName = query => {
     return get(personSearchPath, { query })
         .then(data => {
             // for sake of simplicity grab only first director
-            const firstDirector = data.results.length && data.results[0];
+            const firstDirector = data.results[0];
+
+            if (!firstDirector) {
+                throw `No movies found for ${query}`
+            }
+
             return getMoviesByDirectorId(firstDirector.id);
         })
 };

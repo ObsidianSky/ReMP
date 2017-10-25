@@ -7,6 +7,7 @@ import { NAVIGATE_TO_SEARCH_RESULTS } from './navigation.actions';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SEARCH_TYPE = 'SET_SEARCH_TYPE';
 export const RESET_SEARCH = 'RESET_SEARCH';
+export const SET_ERROR = 'SET_ERROR';
 
 export const setSearchQuery = query => ({
     type: SET_SEARCH_QUERY,
@@ -22,6 +23,11 @@ export const resetSearch = () => ({
     type: RESET_SEARCH
 });
 
+export const setError = error => ({
+    type: SET_ERROR,
+    payload: error
+});
+
 export const searchMovies = () => {
     return (dispatch, getState) => {
         const state = getState();
@@ -34,7 +40,8 @@ export const searchMovies = () => {
                     dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
-            .catch(() => {
+            .catch((e) => {
+                dispatch(setError(e));
                 dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });
     }
