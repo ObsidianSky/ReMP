@@ -30,7 +30,7 @@ class SearchForm extends Component {
                 </div>
                 <div className="search-form__controls">
                     <RadioButtonGroup
-                        activeOption={this.props.selectedType}
+                        activeOption={this.props.type}
                         options={this.props.searchTypes}
                         onSelect={this.props.onSearchTypeChange}
                         title="Search by"
@@ -48,7 +48,7 @@ SearchForm.propTypes = {
     onSearch: PropTypes.func.isRequired,
     query: PropTypes.string,
     error: PropTypes.string,
-    selectedType: PropTypes.string,
+    type: PropTypes.string,
     searchTypes: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.string,
         value: PropTypes.string
@@ -56,7 +56,7 @@ SearchForm.propTypes = {
 };
 
 const mapStateToProps = ({ search }) => ({
-    selectedType: search.selectedType,
+    type: search.type,
     searchTypes: search.types,
     query: search.query,
     error: search.error

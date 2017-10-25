@@ -23,7 +23,15 @@ export const getGenreList = () => {
 
 export const getMoviesByDirectorId = id => {
     return get(`/person/${id}/movie_credits`)
-        .then(data => data.crew.filter(movie => movie.job === 'Director').map(prepareSearchResp));
+        .then(data => {
+            const directedFilms = data.crew.filter(movie => movie.job === 'Director');
+
+            if(!directedFilms.length) {
+                throw new Error();
+            }
+
+            return directedFilms.map(prepareSearchResp)
+        });
 };
 
 export const getMovieById = id => {
@@ -36,6 +44,7 @@ const searchMoviesByTitle = query => {
     return get(movieSearchPath, { query })
         .then(data => {
 
+            //TODO remove hardcoded error message
             if(!data.results.length) {
                 throw `No movies found for ${query}`
             }
@@ -54,7 +63,8 @@ const searchMoviesByDirectorName = query => {
                 throw `No movies found for ${query}`
             }
 
-            return getMoviesByDirectorId(firstDirector.id);
+            return getMoviesByDirectorId(firstDirector.id, query)
+                .catch(() => {throw `No movies found for ${query}`});
         })
 };
 

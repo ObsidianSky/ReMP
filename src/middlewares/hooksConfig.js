@@ -5,11 +5,11 @@ import { resetMovies } from '../actions/movies.actions';
 export default [
     {
         actionName: NAVIGATE_TO_SEARCH_RESULTS,
-        after: (storeState) => storeState.history.push(`/search/${storeState.search.query}`)
+        after: (storeState) => storeState.history.push(`/search?query=${storeState.search.query}&type=${storeState.search.type}`)
     },
     {
         actionName: NAVIGATE_TO_MOVIE,
-        after: (storeState) => storeState.history.push(`/film/${storeState.movies.selectedMovie.title}`)
+        after: (storeState) => storeState.history.push(`/film/${storeState.movies.selectedMovie.id}`)
     },
     {
         before: (storeState) => storeState.history.push(`/`),

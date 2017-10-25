@@ -32,7 +32,7 @@ export const searchMovies = () => {
     return (dispatch, getState) => {
         const state = getState();
 
-        getMoviesSearchResult(state.search.query, state.search.selectedType)
+        getMoviesSearchResult(state.search.query, state.search.type)
             .then(result => {
                     const movies = mapGenresOnMovies(result, state.genres);
                     dispatch(updateMovies(movies));
