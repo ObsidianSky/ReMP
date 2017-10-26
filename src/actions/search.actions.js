@@ -1,13 +1,13 @@
 import { getMoviesSearchResult } from '../services/tmdb.service';
 import { mapGenresOnMovies } from '../services/mapper.service';
 import { sortMovies } from './movies.actions';
-import { updateMovies } from './common.actions';
+import { setError, updateMovies } from './common.actions';
 import { NAVIGATE_TO_SEARCH_RESULTS } from './navigation.actions';
 
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SEARCH_TYPE = 'SET_SEARCH_TYPE';
 export const RESET_SEARCH = 'RESET_SEARCH';
-export const SET_ERROR = 'SET_ERROR';
+
 
 export const setSearchQuery = query => ({
     type: SET_SEARCH_QUERY,
@@ -21,11 +21,6 @@ export const setSearchType = type => ({
 
 export const resetSearch = () => ({
     type: RESET_SEARCH
-});
-
-export const setError = error => ({
-    type: SET_ERROR,
-    payload: error
 });
 
 export const searchMovies = () => {
