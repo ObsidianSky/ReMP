@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import './MovieDetails.scss'
 
 const MovieDetails = ({
@@ -25,11 +27,11 @@ const MovieDetails = ({
             <div className="movie-details__genre">{genre}</div>
             <div className="movie-details__meta">
                 <div className="movie-details__year">{year}</div>
-                <div className="movie-details__duration">{duration}min</div>
+                <div className="movie-details__duration">{duration}</div>
             </div>
             <div className="movie-details__description">{description}</div>
-            <div className="movie-details__director">Director: {director}</div>
-            <div className="movie-details__cast">Cast: {cast.join(', ')}</div>
+            <div className="movie-details__director">Director: {director && director.name}</div>
+            <div className="movie-details__cast">Cast: {cast}</div>
         </div>
     </div>
 );
@@ -37,13 +39,17 @@ const MovieDetails = ({
 MovieDetails.propTypes = {
     img: PropTypes.string,
     title: PropTypes.string,
-    year: PropTypes.number,
+    year: PropTypes.string,
     genre: PropTypes.string,
-    rating: PropTypes.number,
-    duration: PropTypes.number,
+    rating: PropTypes.string,
+    duration: PropTypes.string,
     description: PropTypes.string,
-    director: PropTypes.string,
-    cast: PropTypes.arrayOf(PropTypes.string)
+    director: PropTypes.shape({
+        name: PropTypes.string
+    }),
+    cast: PropTypes.string
 };
 
-export default MovieDetails;
+const mapStateToProps = ({ movies }) => ({ ...movies.selectedMovie });
+
+export default connect(mapStateToProps)(MovieDetails);

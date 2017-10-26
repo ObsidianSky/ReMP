@@ -1,52 +1,71 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import './SearchForm.scss'
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
-import SearchFilter from '../SearchFilter/SearchFilter';
-import { withRouter } from 'react-router-dom'
+import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
+
+import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
 
 class SearchForm extends Component {
-    constructor() {
-        super();
-        this.state = {
-            searchFilters: ['Title', 'Director'],
-            activeFilter: 'Title',
-            searchQuery: ''
-        };
-
-        this.onFilterChange = this.onFilterChange.bind(this);
-        this.onQueryChange = this.onQueryChange.bind(this);
-        this.search = this.search.bind(this);
+    constructor(props) {
+        super(props);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    onFilterChange(filter) {
-        this.setState({
-            activeFilter: filter
-        })
-    }
-
-    onQueryChange(searchQuery) {
-        this.setState({
-            searchQuery: searchQuery
-        })
-    }
-
-    search() {
-        this.props.history.push(`/search/${this.state.searchQuery}`)
+    onFormSubmit(e) {
+        e.preventDefault();
+        this.props.onSearch();
     }
 
     render() {
         return (
-            <div className="search-form">
+            <form className="search-form" onSubmit={this.onFormSubmit}>
                 <div className="search-form__title">Find your movie</div>
-                <div className="search-form__input"><Input onChange={this.onQueryChange}/></div>
-                <div className="search-form__controls">
-                    <SearchFilter filters={this.state.searchFilters} onSelect={this.onFilterChange} title="Search by"/>
-                    <Button className="btn--wide btn--pink" onClick={this.search}>Search</Button>
+                <div className="search-form__error">{this.props.error}</div>
+                <div className="search-form__input">
+                    <Input value={this.props.query} onChange={this.props.onSearchQueryChange}/>
                 </div>
-            </div>
+                <div className="search-form__controls">
+                    <RadioButtonGroup
+                        activeOption={this.props.type}
+                        options={this.props.searchTypes}
+                        onSelect={this.props.onSearchTypeChange}
+                        title="Search by"
+                    />
+                    <Button className="btn--wide btn--pink" onClick={this.props.onSearch}>Search</Button>
+                </div>
+            </form>
         )
     }
 }
 
-export default withRouter(SearchForm);
+SearchForm.propTypes = {
+    onSearchQueryChange: PropTypes.func.isRequired,
+    onSearchTypeChange: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
+    query: PropTypes.string,
+    error: PropTypes.string,
+    type: PropTypes.string,
+    searchTypes: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        value: PropTypes.string
+    })).isRequired
+};
+
+const mapStateToProps = ({ search }) => ({
+    type: search.type,
+    searchTypes: search.types,
+    query: search.query,
+    error: search.error
+});
+
+const mapDispatchToProps = {
+    onSearchQueryChange: setSearchQuery,
+    onSearchTypeChange: setSearchType,
+    onSearch: searchMovies
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

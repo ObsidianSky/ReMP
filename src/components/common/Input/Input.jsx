@@ -6,16 +6,11 @@ class Input extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            value: ''
-        };
-
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(event) {
         const value = event.target.value;
-        this.setState({ value });
         this.props.onChange(value);
     }
 
@@ -23,7 +18,7 @@ class Input extends Component {
         return (
             <input type="text"
                    className="input"
-                   value={this.state.value}
+                   value={this.props.value}
                    placeholder={this.props.placeholder}
                    onChange={this.onChange}
             />
@@ -32,11 +27,12 @@ class Input extends Component {
 }
 
 Input.defaultProps = {
-    placeholder: '',
+    placeholder: ''
 };
 
 Input.propTypes = {
-    placeholder: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 };
 
