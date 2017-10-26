@@ -6,7 +6,11 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack --config ./env/webpack.production.js -p",
-    "server": "babel-node server.js"
+    "server": "babel-node server.js",
+    "test::single::all": "jest --colors",
+    "test::single::changed": "jest -o --colors",
+    "test::watch::all": "jest --watchAll --colors",
+    "test::watch::changed": "jest --watch --colors"
   },
   "repository": {
     "type": "git",
@@ -38,6 +42,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
     "prop-types": "^15.5.10",
     "react-hot-loader": "^3.0.0-beta.7",
