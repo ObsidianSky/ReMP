@@ -1,6 +1,6 @@
 import { SET_SEARCH_QUERY, SET_SEARCH_TYPE, RESET_SEARCH, SET_SEARCH_ERROR } from '../actions/';
 
-const initialState = {
+export const initialState = {
     error: '',
     query: '',
     type: 'title',

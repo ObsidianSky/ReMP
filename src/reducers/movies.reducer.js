@@ -1,33 +1,21 @@
 import { REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES, UPDATE_MOVIES, RESET_MOVIES, SET_SEARCH_ERROR } from '../actions/';
+import { sort } from '../services/sort.service';
 
-const initialState = {
+export const initialState = {
     items: [],
+    selectedMovie: null,
     selectedSortType: 'year',
     sortTypes: [
         { label: 'release date', value: 'year' },
         { label: 'rating', value: 'rating' }
     ],
-    selectedMovie: null
-};
-
-const sortMovies = (type, movies) => {
-    const sortedMovies = [].concat(movies);
-
-    sortedMovies.sort((item1, item2) => {
-        const value1 = item1[type];
-        const value2 = item2[type];
-
-        return value1 > value2 ? -1 : value1 < value2 ? 1 : 0
-    });
-
-    return sortedMovies;
 };
 
 export const moviesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SORT_MOVIES:
             return Object.assign({}, state, {
-                items: sortMovies(action.payload, state.items),
+                items: sort(action.payload, state.items),
                 selectedSortType: action.payload
             });
         case UPDATE_MOVIES:

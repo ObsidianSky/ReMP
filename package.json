@@ -7,10 +7,8 @@
     "start": "webpack-dev-server --open",
     "build": "webpack --config ./env/webpack.production.js -p",
     "server": "babel-node server.js",
-    "test::single::all": "jest --colors",
-    "test::single::changed": "jest -o --colors",
-    "test::watch::all": "jest --watchAll --colors",
-    "test::watch::changed": "jest --watch --colors"
+    "test::single": "jest --colors",
+    "test::watch": "jest --watchAll --colors"
   },
   "repository": {
     "type": "git",

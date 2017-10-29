@@ -39,7 +39,6 @@ export const getMovieById = id => {
         .then(data => prepareDetailsResp(data));
 };
 
-
 const searchMoviesByTitle = query => {
     return get(movieSearchPath, { query })
         .then(data => {

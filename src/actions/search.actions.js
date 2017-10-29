@@ -8,7 +8,6 @@ export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SEARCH_TYPE = 'SET_SEARCH_TYPE';
 export const RESET_SEARCH = 'RESET_SEARCH';
 
-
 export const setSearchQuery = query => ({
     type: SET_SEARCH_QUERY,
     payload: query

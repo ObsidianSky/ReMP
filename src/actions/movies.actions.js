@@ -28,7 +28,6 @@ export const selectMovie = movie => ({
     payload: movie
 });
 
-
 export const showMovieDetails = movieId => {
     return (dispatch, getState) => {
         const state = getState();
