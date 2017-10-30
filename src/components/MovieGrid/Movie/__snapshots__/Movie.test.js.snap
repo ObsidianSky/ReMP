@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie Movie renders correctly 1`] = `
+<div
+  className="movie"
+>
+  <div
+    className="movie__image-link"
+    onClick={[Function]}
+  >
+    <img
+      className="movie__image"
+      src="img"
+    />
+  </div>
+  <div
+    className="movie__info"
+  >
+    <div
+      className="movie__info-row"
+    >
+      <div
+        className="movie__title"
+        onClick={[Function]}
+        title="title"
+      >
+        title
+      </div>
+      <div
+        className="movie__year"
+      >
+        year
+      </div>
+    </div>
+    <div
+      className="movie__info-row"
+    >
+      <div
+        className="movie__genre"
+      >
+        genre
+      </div>
+      <div
+        className="movie__rating"
+      >
+        rating
+      </div>
+    </div>
+  </div>
+</div>
+`;

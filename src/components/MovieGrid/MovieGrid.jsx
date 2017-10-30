@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './MovieGrid.scss'
+if (process.env.BROWSER) {
+    require('./MovieGrid.scss')
+}
+
 import Movie from './Movie/Movie';
 import { showMovieDetails } from '../../actions';
 
-class MovieGrid extends Component {
+export class MovieGrid extends Component {
     buildMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>

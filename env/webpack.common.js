@@ -36,6 +36,11 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'BROWSER': JSON.stringify(true)
+            }
+        }),
         new HtmlPlugin({
             inject: 'body',
             filename: 'index.html',
