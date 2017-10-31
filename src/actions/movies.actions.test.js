@@ -4,19 +4,34 @@ import * as mapperService from "../services/mapper.service";
 import * as commonActions from './common.actions';
 
 describe('movie actions', () => {
-    let dispatch;
-    let getState;
-    let state;
     let expected;
     let actual;
 
-    beforeEach(() => {
-        state = {
-            genres: ['genres']
+    test('should create sort movie action', () => {
+        expected = {
+            type: 'SORT_MOVIES',
+            payload: 'type'
         };
+        actual = sut.sortMovies('type');
 
-        dispatch = jest.fn();
-        getState = jest.fn(() => state);
+        expect(actual).toEqual(expected);
+    });
+
+    test('should create reset movie action', () => {
+        expected = { type: 'RESET_MOVIES' };
+        actual = sut.resetMovies();
+
+        expect(actual).toEqual(expected);
+    });
+
+    test('should create select movie action', () => {
+        expected = {
+            type: 'SELECT_MOVIE',
+            payload: 'movie'
+        };
+        actual = sut.selectMovie('movie');
+
+        expect(actual).toEqual(expected);
     });
 
     describe('show movie details action', () => {
@@ -25,12 +40,22 @@ describe('movie actions', () => {
         let genresString;
         let mappedMovies;
         let updateMoviesAction;
+        let dispatch;
+        let getState;
+        let state;
 
         beforeEach(() => {
             movieId = 'movieId';
             genresString = 'genresString';
             mappedMovies = ['mapped1', 'mapped2'];
             updateMoviesAction = 'updateMoviesAction';
+
+            state = {
+                genres: ['genres']
+            };
+
+            dispatch = jest.fn();
+            getState = jest.fn(() => state);
 
             showMovieDetails = sut.showMovieDetails(movieId);
 
@@ -58,9 +83,7 @@ describe('movie actions', () => {
             beforeEach(() => {
                 fetchedMovie = {
                     genre: 'genre',
-                    director: {
-                        id: 'id'
-                    }
+                    director: { id: 'id' }
                 };
                 fetchedMovies = ['movie1', 'movie2'];
 
@@ -100,7 +123,7 @@ describe('movie actions', () => {
                 });
 
                 test('should update movies with mapped movies', done => {
-                    getMovieByIdPromise.then(() => {;
+                    getMovieByIdPromise.then(() => {
                         expect(commonActions.updateMovies).toHaveBeenCalledWith(mappedMovies);
                         expect(dispatch).toHaveBeenCalledWith(updateMoviesAction);
                         done();

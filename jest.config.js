@@ -7,6 +7,6 @@ module.exports = {
     moduleNameMapper: {
         '\\.scss$': '<rootDir>/config/tests/styleMock.js',
     },
-    collectCoverageFrom: ['src/**/*.{js,jsx}'],
+    collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/**/index.{js,jsx}'],
     coverageDirectory: './coverage'
 };

@@ -2,13 +2,13 @@ import axios from 'axios';
 
 import { prepareDetailsResp, prepareSearchResp } from './mapper.service';
 
-const apiUrl = 'https://api.themoviedb.org/3';
-const apiKey = '52d71cfbf5ad1e146f2b481693eda982';
+export const apiUrl = 'https://api.themoviedb.org/3';
+export const apiKey = '52d71cfbf5ad1e146f2b481693eda982';
 
-const movieSearchPath = '/search/movie';
-const personSearchPath = '/search/person';
-const getMovieDetailsPath = '/movie';
-const genrePath = '/genre/movie/list';
+export const movieSearchPath = '/search/movie';
+export const personSearchPath = '/search/person';
+export const getMovieDetailsPath = '/movie';
+export const genrePath = '/genre/movie/list';
 
 const get = (url, params = {}) => {
     const mergedParams = Object.assign({}, params, { api_key: apiKey });
@@ -27,7 +27,7 @@ export const getMoviesByDirectorId = id => {
             const directedFilms = data.crew.filter(movie => movie.job === 'Director');
 
             if(!directedFilms.length) {
-                throw new Error();
+                throw `No movies found for director with ${id}`;
             }
 
             return directedFilms.map(prepareSearchResp)
@@ -45,7 +45,7 @@ const searchMoviesByTitle = query => {
 
             //TODO remove hardcoded error message
             if(!data.results.length) {
-                throw `No movies found for ${query}`
+                throw `No movies found for ${query}`;
             }
 
             return data.results.map(prepareSearchResp)
@@ -59,10 +59,10 @@ const searchMoviesByDirectorName = query => {
             const firstDirector = data.results[0];
 
             if (!firstDirector) {
-                throw `No movies found for ${query}`
+                throw `No movies found for ${query}`;
             }
 
-            return getMoviesByDirectorId(firstDirector.id, query)
+            return getMoviesByDirectorId(firstDirector.id)
                 .catch(() => {throw `No movies found for ${query}`});
         })
 };

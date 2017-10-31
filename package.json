@@ -8,7 +8,7 @@
     "build": "webpack --config ./config/webpack.production.js -p",
     "server": "babel-node server.js",
     "test::single": "jest --colors --verbose",
-    "test::watch": "jest --watchAll --colors --verbose",
+    "test::watch": "jest --watchAll --colors --verbose --bail",
     "test::update": "jest --u",
     "test::coverage": "jest --coverage"
   },

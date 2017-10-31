@@ -35,7 +35,6 @@ describe('MovieGrid', () => {
     });
 
     describe('when we have movies', () => {
-
         test('should renders correctly', () => {
             const wrapper = shallow(<MovieGrid { ...props } />);
 
@@ -56,8 +55,8 @@ describe('MovieGrid', () => {
         });
     });
 
-    describe('when i dont know how to name it at all', () => {
-        test('should ', () => {
+    describe('when on movie click callback fired', () => {
+        test('should call callback with appropriate movie id', () => {
             const wrapper = shallow(<MovieGrid { ...props } />);
             wrapper.find('Movie').first().simulate('movieClick');
 

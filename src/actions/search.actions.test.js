@@ -55,9 +55,7 @@ describe('search actions', () => {
 
     describe('reset search action', () => {
         test('should create action', () => {
-            expected = {
-                type: 'RESET_SEARCH'
-            };
+            expected = { type: 'RESET_SEARCH' };
 
             actual = sut.resetSearch();
 
