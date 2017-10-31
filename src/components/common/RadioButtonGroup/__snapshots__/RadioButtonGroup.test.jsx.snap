@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButtonGroup when it is search radio button group should renders correctly 1`] = `
+<div
+  className="radio-button-group"
+>
+  <div
+    className="radio-button-group__heading radio-button-group__heading--search"
+  >
+    title
+  </div>
+  <div
+    className="radio-button-group__options"
+  >
+    <Button
+      className="btn--narrow btn--gray"
+      key="0"
+      onClick={[Function]}
+      text=""
+    >
+      label1
+    </Button>
+    <Button
+      className="btn--narrow btn--gray active"
+      key="1"
+      onClick={[Function]}
+      text=""
+    >
+      label2
+    </Button>
+  </div>
+</div>
+`;
+
+exports[`RadioButtonGroup when it is sort radio button group should renders correctly 1`] = `
+<div
+  className="radio-button-group"
+>
+  <div
+    className="radio-button-group__heading radio-button-group__heading--sort"
+  >
+    title
+  </div>
+  <div
+    className="radio-button-group__options"
+  >
+    <Button
+      className="btn--link"
+      key="0"
+      onClick={[Function]}
+      text=""
+    >
+      label1
+    </Button>
+    <Button
+      className="btn--link active"
+      key="1"
+      onClick={[Function]}
+      text=""
+    >
+      label2
+    </Button>
+  </div>
+</div>
+`;
+
+exports[`RadioButtonGroup when there is no active option should renders correctly 1`] = `
+<div
+  className="radio-button-group"
+>
+  <div
+    className="radio-button-group__heading radio-button-group__heading--search"
+  >
+    title
+  </div>
+  <div
+    className="radio-button-group__options"
+  >
+    <Button
+      className="btn--narrow btn--gray"
+      key="0"
+      onClick={[Function]}
+      text=""
+    >
+      label1
+    </Button>
+    <Button
+      className="btn--narrow btn--gray"
+      key="1"
+      onClick={[Function]}
+      text=""
+    >
+      label2
+    </Button>
+  </div>
+</div>
+`;

@@ -13,8 +13,7 @@ export class MovieGrid extends Component {
     buildMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>
-                {/*TODO think how get rid of bind*/}
-                <Movie {...movie} onMovieClick={this.props.showMovieDetails.bind(null, movie.id)}/>
+                <Movie {...movie} onMovieClick={() => this.props.showMovieDetails(movie.id)}/>
             </div>
         ));
     }
@@ -34,13 +33,15 @@ export class MovieGrid extends Component {
 MovieGrid.propTypes = {
     movies: PropTypes.arrayOf(
         PropTypes.shape({
+            id: PropTypes.number,
             img: PropTypes.string,
             title: PropTypes.string,
             year: PropTypes.string,
             genre: PropTypes.string,
             rating: PropTypes.string,
         })
-    )
+    ),
+    showMovieDetails: PropTypes.func
 };
 
 const mapStateToProps = state => ({ movies: state.movies.items });

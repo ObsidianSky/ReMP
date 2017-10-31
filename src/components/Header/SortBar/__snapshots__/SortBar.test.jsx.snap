@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortBar when we do NOT have movies should renders correctly 1`] = `
+<Bar
+  title=""
+/>
+`;
+
+exports[`SortBar when we have movies should renders correctly 1`] = `
+<Bar
+  title="2 movies found"
+>
+  <RadioButtonGroup
+    activeOption="selectedSortType"
+    onSelect={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "release date",
+          "value": "year",
+        },
+        Object {
+          "label": "rating",
+          "value": "rating",
+        },
+      ]
+    }
+    title="Sort by"
+    type="sort"
+  />
+</Bar>
+`;

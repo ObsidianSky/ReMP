@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieGrid when we do NOT have movies should renders correctly 1`] = `
+<div
+  className="movie-grid"
+>
+  <div
+    className="movie-grid__empty"
+  >
+    No movies here
+  </div>
+</div>
+`;
+
+exports[`MovieGrid when we have movies should renders correctly 1`] = `
+<div
+  className="movie-grid"
+>
+  <div
+    className="movie-grid__item"
+    key="0"
+  >
+    <Movie
+      genre="genre"
+      id="id"
+      img="img"
+      onMovieClick={[Function]}
+      rating="rating"
+      title="title"
+      year="year"
+    />
+  </div>
+  <div
+    className="movie-grid__item"
+    key="1"
+  >
+    <Movie
+      genre="genre1"
+      id="id1"
+      img="img1"
+      onMovieClick={[Function]}
+      rating="rating1"
+      title="title1"
+      year="year1"
+    />
+  </div>
+</div>
+`;

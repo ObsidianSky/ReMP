@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should renders correctly 1`] = `
+<div
+  className="top-bar"
+>
+  <Logo />
+  <Route
+    component={[Function]}
+    path="/film"
+  />
+</div>
+`;

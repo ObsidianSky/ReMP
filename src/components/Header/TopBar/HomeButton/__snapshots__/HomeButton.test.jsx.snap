@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeButton should renders correctly 1`] = `
+<Button
+  className="btn--wide"
+  onClick={[Function]}
+  text=""
+>
+  Search
+</Button>
+`;

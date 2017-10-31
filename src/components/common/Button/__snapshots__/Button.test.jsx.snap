@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button when we do NOT have children should renders component with text 1`] = `
+<button
+  className="btn className"
+  onClick={[Function]}
+  type="button"
+>
+  text
+</button>
+`;
+
+exports[`Button when we have children should renders component with children instead of text 1`] = `
+<button
+  className="btn className"
+  onClick={[Function]}
+  type="button"
+>
+  <div>
+    children
+  </div>
+</button>
+`;

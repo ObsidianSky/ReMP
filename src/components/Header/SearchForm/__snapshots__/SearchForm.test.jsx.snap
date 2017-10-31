@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm should renders correctly 1`] = `
+<form
+  className="search-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="search-form__title"
+  >
+    Find your movie
+  </div>
+  <div
+    className="search-form__error"
+  >
+    error
+  </div>
+  <div
+    className="search-form__input"
+  >
+    <Input
+      onChange={[Function]}
+      placeholder=""
+      value="query"
+    />
+  </div>
+  <div
+    className="search-form__controls"
+  >
+    <RadioButtonGroup
+      activeOption="type"
+      onSelect={[Function]}
+      options={
+        Array [
+          Object {
+            "label": "title",
+            "value": "title",
+          },
+          Object {
+            "label": "director",
+            "value": "director",
+          },
+        ]
+      }
+      title="Search by"
+      type="search"
+    />
+    <Button
+      className="btn--wide btn--pink"
+      onClick={[Function]}
+      text=""
+    >
+      Search
+    </Button>
+  </div>
+</form>
+`;

@@ -27,17 +27,17 @@ describe('Movie', () => {
     });
 
     test('should call provided callback on image click', () => {
-        const wrapper  = shallow(<Movie { ...props } />);
+        const wrapper = shallow(<Movie { ...props } />);
 
-        wrapper .find('.movie__image-link').simulate('click');
+        wrapper.find('.movie__image-link').simulate('click');
 
         expect(onMovieClick).toHaveBeenCalled();
     });
 
     test('should call provided callback on title click', () => {
-        const wrapper  = shallow(<Movie { ...props } />);
+        const wrapper = shallow(<Movie { ...props } />);
 
-        wrapper .find('.movie__title').simulate('click');
+        wrapper.find('.movie__title').simulate('click');
 
         expect(onMovieClick).toHaveBeenCalled();
     });
