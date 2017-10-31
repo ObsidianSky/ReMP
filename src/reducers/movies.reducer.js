@@ -1,6 +1,7 @@
 import { REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES, UPDATE_MOVIES, RESET_MOVIES, SET_SEARCH_ERROR } from '../actions/';
 import { sort } from '../services/sort.service';
 
+//TODO think about move selectedMovie into separate reducer
 export const initialState = {
     items: [],
     selectedMovie: null,
