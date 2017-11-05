@@ -2,17 +2,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './SearchForm.scss'
+if (process.env.BROWSER) {
+	require('./SearchForm.scss');
+}
+
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
 
 import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
+import { App } from '../../../App';
 
 export class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+    }
+
+    static prepareState(store, queryParams) {
+        const { dispatch, getState } = store;
+
+        //find better way to resolve genres;
+
+        return App.prepareState(store, queryParams)
+            .then(() => {
+                dispatch(setSearchQuery(queryParams.query));
+                dispatch(setSearchType(queryParams.type));
+
+                return searchMovies()(dispatch, getState);
+            });
     }
 
     onFormSubmit(e) {

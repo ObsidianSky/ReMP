@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Button.scss'
+if (process.env.BROWSER) {
+	require('./Button.scss');
+}
 
 const Button = ({ className, onClick, children, text }) => (
     <button className={`btn ${className}`} onClick={onClick} type="button">

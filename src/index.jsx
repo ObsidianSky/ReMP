@@ -4,8 +4,10 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { configureStore } from './configureStore';
 
-import 'reset-css/reset.css';
-import './assets/styles/common.scss'
+if (process.env.BROWSER) {
+    require('reset-css/reset.css');
+	require('./assets/styles/common.scss');
+}
 
 import App from './App'
 import { BrowserRouter as Router } from 'react-router-dom';

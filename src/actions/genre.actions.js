@@ -8,7 +8,7 @@ const setGenres = genres => ({
 
 export const requestGenres = () => {
     return dispatch => {
-        getGenreList()
+        return getGenreList()
             .then(genres => {
                 dispatch(setGenres(genres));
             });

@@ -26,17 +26,18 @@ export const searchMovies = () => {
     return (dispatch, getState) => {
         const state = getState();
 
-        getMoviesSearchResult(state.search.query, state.search.type)
+        return getMoviesSearchResult(state.search.query, state.search.type)
             .then(result => {
                     const movies = mapGenresOnMovies(result, state.genres);
                     dispatch(updateMovies(movies));
                     dispatch(sortMovies(state.movies.selectedSortType));
-                    dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
+                    // dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
             .catch((e) => {
+                console.log(e);
                 dispatch(setError(e));
-                dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
+                // dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });
     }
 };

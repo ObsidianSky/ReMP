@@ -1,5 +1,7 @@
 import React from 'react';
-import './Footer.scss'
+if (process.env.BROWSER) {
+	require('./Footer.scss');
+}
 import Logo from '../common/Logo/Logo';
 
 const Footer = () => (

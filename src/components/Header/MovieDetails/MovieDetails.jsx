@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import './MovieDetails.scss'
+if (process.env.BROWSER) {
+	require('./MovieDetails.scss');
+}
 
 export const MovieDetails = ({
     img,
