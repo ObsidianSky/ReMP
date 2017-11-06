@@ -32,7 +32,7 @@ export const showMovieDetails = movieId => {
     return (dispatch, getState) => {
         const state = getState();
 
-        getMovieById(movieId)
+        return getMovieById(movieId)
             .then(movie => {
                 movie.genre = genresToString(movie.genre);
                 dispatch(selectMovie(movie));

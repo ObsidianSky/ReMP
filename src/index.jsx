@@ -15,7 +15,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 const renderToRoot = Component => {
     render(
         <AppContainer>
-            <Provider store={configureStore()}>
+            <Provider store={configureStore(window.__PRELOADED_STATE__)}>
                 <Router>
                     <Component/>
                 </Router>

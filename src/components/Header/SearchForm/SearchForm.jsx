@@ -19,12 +19,12 @@ export class SearchForm extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
-    static prepareState(store, queryParams) {
+    static prepareState(store, match, queryParams) {
         const { dispatch, getState } = store;
 
         //find better way to resolve genres;
 
-        return App.prepareState(store, queryParams)
+        return App.prepareState(store)
             .then(() => {
                 dispatch(setSearchQuery(queryParams.query));
                 dispatch(setSearchType(queryParams.type));

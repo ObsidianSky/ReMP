@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 if (process.env.BROWSER) {
 	require('./Movie.scss');
 }

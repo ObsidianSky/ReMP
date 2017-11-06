@@ -1,6 +1,5 @@
 import MovieDetails from './components/Header/MovieDetails/MovieDetails';
 import SearchForm from './components/Header/SearchForm/SearchForm';
-import DetailsBar from './components/Header/DetailsBar/DetailsBar';
 
 const routes = [
     {
@@ -9,14 +8,9 @@ const routes = [
         name: 'SearchForm'
     },
     {
-        path: '/film',
+        path: '/film/:id',
         component: MovieDetails,
         name: 'MovieDetails'
-    },
-    {
-        path: '/film',
-        component: DetailsBar,
-        name: 'DetailsBar'
     }
 ];
 

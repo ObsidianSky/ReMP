@@ -19,7 +19,7 @@ export const searchReducer = (state = initialSearchState, action) => {
         case SET_SEARCH_ERROR:
             return Object.assign({}, state, { error: action.payload });
         case RESET_SEARCH:
-            return Object.assign({}, initialState);
+            return Object.assign({}, initialSearchState);
         default:
             return state;
     }

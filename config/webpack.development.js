@@ -35,6 +35,11 @@ module.exports = webpackMerge(commonConfig, {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'DEV': JSON.stringify(true)
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin()

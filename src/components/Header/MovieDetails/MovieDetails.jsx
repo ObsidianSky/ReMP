@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { App } from "../../../App";
+import {showMovieDetails} from "../../../actions/movies.actions";
 
 if (process.env.BROWSER) {
 	require('./MovieDetails.scss');
@@ -37,6 +39,15 @@ export const MovieDetails = ({
         </div>
     </div>
 );
+
+MovieDetails.prepareState = (store, match) => {
+    const { dispatch, getState } = store;
+
+    //find better way to resolve genres;
+
+    return App.prepareState(store)
+        .then(() => showMovieDetails(match.params.id)(dispatch, getState));
+};
 
 MovieDetails.propTypes = {
     img: PropTypes.string.isRequired,

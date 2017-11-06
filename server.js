@@ -12,7 +12,7 @@ import { configureStore } from './src/configureStore';
 const app = express();
 const port = 3000;
 
-// app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/build'));
 
 // app.get('/', function(req, res) {
 //     res.sendFile(__dirname + '/build/index.html')
@@ -26,7 +26,7 @@ function handleRender(req, res) {
     const branch = matchRoutes(routes, req.path);
     console.log(branch);
     const stateToResolve = branch.map(({ route, match}) => {
-        return route.component.prepareState(store, req.query);
+        return route.component.prepareState(store, match, req.query);
     });
 
     return Promise.all(stateToResolve).then(() => {
@@ -38,10 +38,7 @@ function handleRender(req, res) {
             </Provider>
         );
 
-        const preloadedState = store.getState();
-
-        // Send the rendered page back to the client
-        res.json(preloadedState)
+        res.send(renderFullPage(html, store.getState()));
     });
 
 }
@@ -54,15 +51,16 @@ function renderFullPage(html, preloadedState) {
             <meta charset="utf-8">
             <title>Netflix Search App</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link href="style.css" rel="stylesheet">
+            <link href="/style.css" rel="stylesheet">
+            <base href="/">
         </head>
         <body>
             <div id="root">${html}</div>
             <script>
-                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
+                window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
             </script>
-            <script type="text/javascript" src="common.js"></script>
-            <script type="text/javascript" src="index.bundle.js"></script>
+            <script type="text/javascript" src="/common.js"></script>
+            <script type="text/javascript" src="/index.bundle.js"></script>
         </body>
         </html>
     `
