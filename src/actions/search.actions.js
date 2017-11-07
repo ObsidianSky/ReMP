@@ -34,8 +34,7 @@ export const searchMovies = () => {
                     dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
-            .catch((e) => {
-                console.log(e);
+            .catch(e => {
                 dispatch(setError(e));
                 dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });

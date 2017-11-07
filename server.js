@@ -14,17 +14,13 @@ const port = 3000;
 
 app.use(express.static(__dirname + '/build'));
 
-// app.get('/', function(req, res) {
-//     res.sendFile(__dirname + '/build/index.html')
-// });
-
-app.use(handleRender);
+app.get('*', handleRender);
 
 function handleRender(req, res) {
     const store = configureStore();
-
+    const context = {};
     const branch = matchRoutes(routes, req.path);
-    console.log(branch);
+
     const stateToResolve = branch.map(({ route, match}) => {
         return route.component.prepareState(store, match, req.query);
     });
@@ -32,7 +28,7 @@ function handleRender(req, res) {
     return Promise.all(stateToResolve).then(() => {
         const html = renderToString(
             <Provider store={store}>
-                <Router location={req.url}>
+                <Router location={req.url} context={context}>
                     <App />
                 </Router>
             </Provider>
@@ -40,7 +36,6 @@ function handleRender(req, res) {
 
         res.send(renderFullPage(html, store.getState()));
     });
-
 }
 
 function renderFullPage(html, preloadedState) {
@@ -52,7 +47,6 @@ function renderFullPage(html, preloadedState) {
             <title>Netflix Search App</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link href="/style.css" rel="stylesheet">
-            <base href="/">
         </head>
         <body>
             <div id="root">${html}</div>
