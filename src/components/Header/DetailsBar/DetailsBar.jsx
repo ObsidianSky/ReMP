@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Bar from '../../common/Bar/Bar';
 
-const DetailsBar = ({ directorName }) => (
+export const DetailsBar = ({ directorName }) => (
     <Bar title={directorName ? `Films by ${directorName}` : ''} />
 );
 

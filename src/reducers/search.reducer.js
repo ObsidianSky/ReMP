@@ -1,6 +1,6 @@
-import { SET_SEARCH_QUERY, SET_SEARCH_TYPE, RESET_SEARCH, SET_ERROR } from '../actions/';
+import { SET_SEARCH_QUERY, SET_SEARCH_TYPE, RESET_SEARCH, SET_SEARCH_ERROR } from '../actions/';
 
-const initialState = {
+export const initialState = {
     error: '',
     query: '',
     type: 'title',
@@ -16,7 +16,7 @@ export const searchReducer = (state = initialState, action) => {
             return Object.assign({}, state, { query: action.payload, error: '' });
         case SET_SEARCH_TYPE:
             return Object.assign({}, state, { type: action.payload, error: '' });
-        case SET_ERROR:
+        case SET_SEARCH_ERROR:
             return Object.assign({}, state, { error: action.payload });
         case RESET_SEARCH:
             return Object.assign({}, initialState);

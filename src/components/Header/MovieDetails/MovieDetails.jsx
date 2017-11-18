@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './MovieDetails.scss'
 
-const MovieDetails = ({
+export const MovieDetails = ({
     img,
     title,
     year,
@@ -30,24 +30,24 @@ const MovieDetails = ({
                 <div className="movie-details__duration">{duration}</div>
             </div>
             <div className="movie-details__description">{description}</div>
-            <div className="movie-details__director">Director: {director && director.name}</div>
+            { director && <div className="movie-details__director">Director: { director.name}</div> }
             <div className="movie-details__cast">Cast: {cast}</div>
         </div>
     </div>
 );
 
 MovieDetails.propTypes = {
-    img: PropTypes.string,
-    title: PropTypes.string,
-    year: PropTypes.string,
-    genre: PropTypes.string,
-    rating: PropTypes.string,
-    duration: PropTypes.string,
-    description: PropTypes.string,
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     director: PropTypes.shape({
-        name: PropTypes.string
+        name: PropTypes.string.isRequired
     }),
-    cast: PropTypes.string
+    cast: PropTypes.string.isRequired
 };
 
 const mapStateToProps = ({ movies }) => ({ ...movies.selectedMovie });

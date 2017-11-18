@@ -1,7 +1,7 @@
-const imgPath = 'https://image.tmdb.org/t/p/w500';
+export const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 // TODO change on local image path
-const backdropImgPath = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+export const backdropImgPath = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
 
 const basicTransformMap = {
     id: 'id',
@@ -67,7 +67,7 @@ export const prepareSearchResp = rawData => transformMovieFields(rawData, search
 export const prepareDetailsResp = rawData => transformMovieFields(rawData, detailsResultTransformMap);
 
 export const genresToString = genres => {
-    return genres.map(genre => genre ? genre.name : '').join(', ');
+    return genres.map(genre => genre ? genre.name : '').filter(name => name !== '').join(', ');
 };
 
 const mapGenres = (movie, genreList) => {

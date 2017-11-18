@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { navigateHome } from '../../../../actions/navigation.actions';
 import Button from '../../../common/Button/Button';
 
-const HomeButton = ({ navigateHome }) => (
+export const HomeButton = ({ navigateHome }) => (
     <Button onClick={navigateHome} className="btn--wide">Search</Button>
 );
 

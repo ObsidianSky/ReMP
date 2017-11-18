@@ -9,7 +9,7 @@ import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
 
 import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
 
-class SearchForm extends Component {
+export class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -50,8 +50,8 @@ SearchForm.propTypes = {
     error: PropTypes.string,
     type: PropTypes.string,
     searchTypes: PropTypes.arrayOf(PropTypes.shape({
-        label: PropTypes.string,
-        value: PropTypes.string
+        label: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired
     })).isRequired
 };
 

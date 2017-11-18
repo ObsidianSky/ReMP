@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should renders correctly 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="header__background"
+  >
+    <div
+      className="header__shadow"
+    >
+      <div
+        className="header__inner"
+      >
+        <div
+          className="header__top-bar"
+        >
+          <TopBar />
+        </div>
+        <div
+          className="header__content"
+        >
+          <Switch>
+            <Route
+              component={[Function]}
+              path="/film"
+            />
+            <Route
+              component={[Function]}
+              path="/"
+            />
+          </Switch>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="header__bottom-bar"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        path="/film"
+      />
+      <Route
+        component={[Function]}
+        path="/"
+      />
+    </Switch>
+  </div>
+</header>
+`;

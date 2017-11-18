@@ -28,10 +28,10 @@ export const selectMovie = movie => ({
     payload: movie
 });
 
-
 export const showMovieDetails = movieId => {
     return (dispatch, getState) => {
         const state = getState();
+
         getMovieById(movieId)
             .then(movie => {
                 movie.genre = genresToString(movie.genre);
@@ -40,12 +40,17 @@ export const showMovieDetails = movieId => {
                 //some movies can be without director
                 return movie.director
                     ? getMoviesByDirectorId(movie.director.id)
-                    : [];
+                    : null;
             })
             .then(result => {
-                const movies = mapGenresOnMovies(result, state.genres);
-                dispatch(updateMovies(movies));
-                dispatch(removeMovie(movieId));
+                if (result) {
+                    const movies = mapGenresOnMovies(result, state.genres);
+                    dispatch(updateMovies(movies));
+                    dispatch(removeMovie(movieId));
+                } else {
+                    dispatch(updateMovies([]));
+                }
+
                 dispatch({type: NAVIGATE_TO_MOVIE})
             })
             .catch(() => {

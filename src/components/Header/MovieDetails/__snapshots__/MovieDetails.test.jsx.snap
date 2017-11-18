@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetails when we do NOT have director should renders correctly 1`] = `
+<div
+  className="movie-details"
+>
+  <div
+    className="movie-details__poster"
+  >
+    <img
+      className="movie-details__img"
+      src="img"
+    />
+  </div>
+  <div
+    className="movie-details__info"
+  >
+    <div
+      className="movie-details__heading"
+    >
+      <div
+        className="movie-details__title"
+      >
+        title
+      </div>
+      <div
+        className="movie-details__rating"
+      >
+        rating
+      </div>
+    </div>
+    <div
+      className="movie-details__genre"
+    >
+      genre
+    </div>
+    <div
+      className="movie-details__meta"
+    >
+      <div
+        className="movie-details__year"
+      >
+        year
+      </div>
+      <div
+        className="movie-details__duration"
+      >
+        duration
+      </div>
+    </div>
+    <div
+      className="movie-details__description"
+    >
+      description
+    </div>
+    <div
+      className="movie-details__cast"
+    >
+      Cast: 
+      cast
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MovieDetails when we have director should renders correctly 1`] = `
+<div
+  className="movie-details"
+>
+  <div
+    className="movie-details__poster"
+  >
+    <img
+      className="movie-details__img"
+      src="img"
+    />
+  </div>
+  <div
+    className="movie-details__info"
+  >
+    <div
+      className="movie-details__heading"
+    >
+      <div
+        className="movie-details__title"
+      >
+        title
+      </div>
+      <div
+        className="movie-details__rating"
+      >
+        rating
+      </div>
+    </div>
+    <div
+      className="movie-details__genre"
+    >
+      genre
+    </div>
+    <div
+      className="movie-details__meta"
+    >
+      <div
+        className="movie-details__year"
+      >
+        year
+      </div>
+      <div
+        className="movie-details__duration"
+      >
+        duration
+      </div>
+    </div>
+    <div
+      className="movie-details__description"
+    >
+      description
+    </div>
+    <div
+      className="movie-details__director"
+    >
+      Director: 
+      director
+    </div>
+    <div
+      className="movie-details__cast"
+    >
+      Cast: 
+      cast
+    </div>
+  </div>
+</div>
+`;

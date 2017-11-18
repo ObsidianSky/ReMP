@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailsBar when we do NOT have director name should renders correctly 1`] = `
+<Bar
+  title=""
+/>
+`;
+
+exports[`DetailsBar when we have director name should renders correctly 1`] = `
+<Bar
+  title="Films by directorName"
+/>
+`;
