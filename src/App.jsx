@@ -14,7 +14,7 @@ import { setHistory, requestGenres } from './actions';
 
 export class App extends Component {
     static prepareState(store) {
-        return requestGenres()(store.dispatch);
+        return store.dispatch(requestGenres());
     }
 
     componentDidMount() {

@@ -6,12 +6,11 @@ if (process.env.BROWSER) {
 	require('./SearchForm.scss');
 }
 
+import { App } from '../../../App';
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
 import RadioButtonGroup from '../../common/RadioButtonGroup/RadioButtonGroup';
-
 import { searchMovies, setSearchQuery, setSearchType } from '../../../actions';
-import { App } from '../../../App';
 
 export class SearchForm extends Component {
     constructor(props) {
@@ -20,16 +19,15 @@ export class SearchForm extends Component {
     }
 
     static prepareState(store, match, queryParams) {
-        const { dispatch, getState } = store;
+        const { dispatch } = store;
 
-        //find better way to resolve genres;
-
+        //TODO find better way to resolve genres;
         return App.prepareState(store)
             .then(() => {
                 dispatch(setSearchQuery(queryParams.query));
                 dispatch(setSearchType(queryParams.type));
 
-                return searchMovies()(dispatch, getState);
+                return dispatch(searchMovies());
             });
     }
 

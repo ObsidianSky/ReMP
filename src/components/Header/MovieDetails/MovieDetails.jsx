@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { App } from "../../../App";
-import {showMovieDetails} from "../../../actions/movies.actions";
 
 if (process.env.BROWSER) {
 	require('./MovieDetails.scss');
 }
+
+import { App } from '../../../App';
+import { showMovieDetails } from '../../../actions/movies.actions';
 
 export const MovieDetails = ({
     img,
@@ -41,12 +42,10 @@ export const MovieDetails = ({
 );
 
 MovieDetails.prepareState = (store, match) => {
-    const { dispatch, getState } = store;
-
-    //find better way to resolve genres;
+    const { dispatch } = store;
 
     return App.prepareState(store)
-        .then(() => showMovieDetails(match.params.id)(dispatch, getState));
+        .then(() => dispatch(showMovieDetails(match.params.id)));
 };
 
 MovieDetails.propTypes = {

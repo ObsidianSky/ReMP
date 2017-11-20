@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { configureStore } from './configureStore';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 if (process.env.BROWSER) {
     require('reset-css/reset.css');
@@ -10,7 +10,7 @@ if (process.env.BROWSER) {
 }
 
 import App from './App'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { configureStore } from './configureStore';
 
 const renderToRoot = Component => {
     render(
