@@ -51,10 +51,6 @@ export const showMovieDetails = movieId => {
                     dispatch(updateMovies([]));
                 }
 
-                dispatch({type: NAVIGATE_TO_MOVIE})
-            })
-            .catch(() => {
-                dispatch({type: NAVIGATE_TO_MOVIE})
             })
     }
 };

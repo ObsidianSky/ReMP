@@ -31,12 +31,10 @@ export const searchMovies = () => {
                     const movies = mapGenresOnMovies(result, state.genres);
                     dispatch(updateMovies(movies));
                     dispatch(sortMovies(state.movies.selectedSortType));
-                    dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
             .catch(e => {
                 dispatch(setError(e));
-                dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });
     }
 };

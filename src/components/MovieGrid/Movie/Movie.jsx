@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+
 
 if (process.env.BROWSER) {
 	require('./Movie.scss');
 }
 
-const Movie = ({ img, title, year, genre, director, rating, onMovieClick }) => (
+const Movie = ({id, img, title, year, genre, director, rating, onMovieClick }) => (
     <div className="movie">
         {/*TODO rename class*/}
-        <div className="movie__image-link" onClick={onMovieClick}>
+        <Link className="movie__image-link" to={`/film/${id}`}>
             <img className="movie__image" src={img}/>
-        </div>
+        </Link>
         <div className="movie__info">
             <div className="movie__info-row">
-                <div className="movie__title" title={title} onClick={onMovieClick}>
+                <Link className="movie__title" title={title} to={`/film/${id}`}>
                     {title}
-                </div>
+                </Link>
                 <div className="movie__year">{year}</div>
             </div>
             <div className="movie__info-row">
@@ -27,6 +29,7 @@ const Movie = ({ img, title, year, genre, director, rating, onMovieClick }) => (
 );
 
 Movie.propTypes = {
+    id: PropTypes.number,
     img: PropTypes.string,
     title: PropTypes.string,
     year: PropTypes.string,

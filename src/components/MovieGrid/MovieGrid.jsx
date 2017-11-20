@@ -7,13 +7,12 @@ if (process.env.BROWSER) {
 }
 
 import Movie from './Movie/Movie';
-import { showMovieDetails } from '../../actions';
 
 export class MovieGrid extends Component {
     buildMovies() {
         return this.props.movies.map((movie, index) => (
             <div className="movie-grid__item" key={index}>
-                <Movie {...movie} onMovieClick={() => this.props.showMovieDetails(movie.id)}/>
+                <Movie {...movie}/>
             </div>
         ));
     }
@@ -46,4 +45,4 @@ MovieGrid.propTypes = {
 
 const mapStateToProps = state => ({ movies: state.movies.items });
 
-export default connect(mapStateToProps, { showMovieDetails })(MovieGrid);
+export default connect(mapStateToProps, null)(MovieGrid);

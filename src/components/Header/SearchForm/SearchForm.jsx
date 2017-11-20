@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
+
 
 if (process.env.BROWSER) {
 	require('./SearchForm.scss');
@@ -35,7 +37,10 @@ export class SearchForm extends Component {
 
     onFormSubmit(e) {
         e.preventDefault();
+
+        const { history, type, query } = this.props;
         this.props.onSearch();
+        history.push(`/search?query=${query}&type=${type}`);
     }
 
     render() {
@@ -86,4 +91,4 @@ const mapDispatchToProps = {
     onSearch: searchMovies
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchForm));

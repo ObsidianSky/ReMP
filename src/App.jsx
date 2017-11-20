@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
@@ -11,6 +11,8 @@ import Header from './components/Header/Header';
 import MovieGrid from './components/MovieGrid/MovieGrid';
 import Footer from './components/Footer/Footer';
 import { setHistory, requestGenres } from './actions';
+import SearchPage from './pages/searchPage/SearchPage';
+import FilmPage from './pages/FilmPage/FilmPage';
 
 export class App extends Component {
     static prepareState(store) {
@@ -25,19 +27,10 @@ export class App extends Component {
 
     render() {
         return (
-            <Route path="/">
-                <div className="app">
-                    <div className="app__header">
-                        <Header/>
-                    </div>
-                    <div className="app__main">
-                        <MovieGrid/>
-                    </div>
-                    <div className="app__footer">
-                        <Footer/>
-                    </div>
-                </div>
-            </Route>
+            <Switch>
+                <Route path="/film" component={FilmPage}/>
+                <Route path="/" component={SearchPage}/>
+            </Switch>
         )
     }
 }
