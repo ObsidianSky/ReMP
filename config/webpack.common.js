@@ -42,7 +42,7 @@ module.exports = {
             }
         }),
         new HtmlPlugin({
-            inject: 'body',
+            inject: false,
             filename: 'index.html',
             template: path.resolve(__dirname, '../src/index.html')
         })

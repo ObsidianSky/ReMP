@@ -6,7 +6,9 @@ import Logo from '../common/Logo/Logo';
 
 const Footer = () => (
     <div className="footer">
-        <Logo/>
+        <div className="footer__inner">
+            <Logo/>
+        </div>
     </div>
 );
 

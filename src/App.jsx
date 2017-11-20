@@ -7,12 +7,10 @@ if (process.env.BROWSER) {
 	require('./App.scss');
 }
 
-import Header from './components/Header/Header';
-import MovieGrid from './components/MovieGrid/MovieGrid';
-import Footer from './components/Footer/Footer';
-import { setHistory, requestGenres } from './actions';
+import { requestGenres } from './actions';
 import SearchPage from './pages/searchPage/SearchPage';
 import FilmPage from './pages/FilmPage/FilmPage';
+import Spinner from './components/common/Spinner/Spinner';
 
 export class App extends Component {
     static prepareState(store) {
@@ -20,19 +18,22 @@ export class App extends Component {
     }
 
     componentDidMount() {
-        const { setHistory, requestGenres, history } = this.props;
-        setHistory(history);
+        const { requestGenres } = this.props;
         requestGenres();
     }
 
     render() {
         return (
-            <Switch>
-                <Route path="/film" component={FilmPage}/>
-                <Route path="/" component={SearchPage}/>
-            </Switch>
+            <div>
+                <Switch>
+                    <Route path="/film/:id" component={FilmPage}/>
+                    <Route path="/" component={SearchPage}/>
+                </Switch>
+                <Spinner visible={this.props.loading} />
+            </div>
         )
     }
 }
+const mapStateToProps = ({ loading }) => ({ loading });
 
-export default withRouter(connect(null, { setHistory, requestGenres })(App));
+export default withRouter(connect(mapStateToProps, { requestGenres })(App));

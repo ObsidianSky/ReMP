@@ -25,7 +25,7 @@ export const MovieDetails = ({
         </div>
         <div className="movie-details__info">
             <div className="movie-details__heading">
-                <div className="movie-details__title">{title}</div>
+                <div className="movie-details__title">{title}asdgdasg</div>
                 <div className="movie-details__rating">{rating}</div>
             </div>
             <div className="movie-details__genre">{genre}</div>
@@ -50,17 +50,17 @@ MovieDetails.prepareState = (store, match) => {
 };
 
 MovieDetails.propTypes = {
-    img: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    year: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.string,
+    duration: PropTypes.string,
+    description: PropTypes.string,
     director: PropTypes.shape({
-        name: PropTypes.string.isRequired
+        name: PropTypes.string
     }),
-    cast: PropTypes.string.isRequired
+    cast: PropTypes.string
 };
 
 const mapStateToProps = ({ movies }) => ({ ...movies.selectedMovie });

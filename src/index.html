@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Netflix Search App</title>
+    <title>Ex. Netflix Search App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="<%= htmlWebpackPlugin.files.css[0] %>" rel="stylesheet">
 </head>
 <body>
     <div id="root">Loading...</div>
+    <% _.forEach(htmlWebpackPlugin.files.js, function(src) { %><script src="./<%- src %>"></script><% }); %>
 </body>
 </html>

@@ -1,7 +1,6 @@
 import { getMovieById, getMoviesByDirectorId } from '../services/tmdb.service';
 import { genresToString, mapGenresOnMovies } from '../services/mapper.service';
 import { updateMovies } from './common.actions';
-import { NAVIGATE_TO_MOVIE } from './navigation.actions';
 
 export const SORT_MOVIES = 'SORT_MOVIES';
 export const REMOVE_MOVIE = 'REMOVE_MOVIE';
@@ -16,7 +15,7 @@ export const sortMovies = type => ({
 
 const removeMovie = id => ({
     type: REMOVE_MOVIE,
-    payload: id
+    payload: Number(id)
 });
 
 export const resetMovies = () => ({

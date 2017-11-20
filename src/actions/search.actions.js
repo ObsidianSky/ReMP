@@ -2,7 +2,6 @@ import { getMoviesSearchResult } from '../services/tmdb.service';
 import { mapGenresOnMovies } from '../services/mapper.service';
 import { sortMovies } from './movies.actions';
 import { setError, updateMovies } from './common.actions';
-import { NAVIGATE_TO_SEARCH_RESULTS } from './navigation.actions';
 
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const SET_SEARCH_TYPE = 'SET_SEARCH_TYPE';

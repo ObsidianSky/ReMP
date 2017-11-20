@@ -2,21 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './root.reducer';
 import thunk from 'redux-thunk';
 
-// import hooks from './middlewares/hooksConfig';
-// import { createHooksMiddleware } from './middlewares/hooks.middleware';
-
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 function getMiddleware() {
     let middleware = [
         thunk
     ];
-    //
-    // if (process.env.BROWSER) {
-    //     middleware = middleware.concat([
-    //         createHooksMiddleware(hooks)
-    //     ])
-    // }
 
     if (process.env.DEV) {
         return composeWithDevTools(

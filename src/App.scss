@@ -10,3 +10,28 @@
     display: flex;
   }
 }
+
+.header {
+  &__background {
+    background-image: url('./bg.jpg');
+    background-size: cover;
+  }
+
+  &__shadow {
+    background-color: rgba(0, 0, 0, .76);
+  }
+
+  &__inner {
+    padding: 10px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__content {
+    margin-bottom: 20px;
+  }
+
+  &__top-bar {
+    margin-bottom: 35px;
+  }
+}
