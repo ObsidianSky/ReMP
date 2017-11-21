@@ -1,4 +1,4 @@
-import { moviesReducer as sut, initialState } from './movies.reducer';
+import { moviesReducer as sut,initialMovieState as initialState } from './movies.reducer';
 import * as sortService from '../services/sort.service'
 
 describe('movies reducer', () => {

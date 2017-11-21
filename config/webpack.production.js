@@ -2,6 +2,8 @@ const commonConfig = require('./webpack.common.js');
 const webpackMerge = require('webpack-merge');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = webpackMerge(commonConfig, {
     module: {
@@ -39,6 +41,12 @@ module.exports = webpackMerge(commonConfig, {
         }),
         new ExtractTextPlugin({
             filename: 'style.css'
+        }),
+        new HtmlPlugin({
+            dev: false,
+            inject: 'body',
+            filename: 'template.html',
+            template: path.resolve(__dirname, '../src/index.html')
         })
     ]
 });

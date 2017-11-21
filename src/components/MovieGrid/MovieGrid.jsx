@@ -33,7 +33,7 @@ export class MovieGrid extends Component {
 MovieGrid.propTypes = {
     movies: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string,
+            id: PropTypes.number,
             img: PropTypes.string,
             title: PropTypes.string,
             year: PropTypes.string,

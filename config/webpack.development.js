@@ -1,6 +1,8 @@
 const commonConfig = require('./webpack.common.js');
 const webpackMerge = require('webpack-merge');
 const webpack = require('webpack');
+const HtmlPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 process.traceDeprecation = true;
 
@@ -35,8 +37,19 @@ module.exports = webpackMerge(commonConfig, {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'DEV': JSON.stringify(true)
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new HtmlPlugin({
+            dev: true,
+            inject: 'body',
+            filename: 'index.html',
+            template: path.resolve(__dirname, '../src/index.html')
+        })
     ],
 });

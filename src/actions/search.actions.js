@@ -26,7 +26,7 @@ export const searchMovies = () => {
     return (dispatch, getState) => {
         const state = getState();
 
-        getMoviesSearchResult(state.search.query, state.search.type)
+        return getMoviesSearchResult(state.search.query, state.search.type)
             .then(result => {
                     const movies = mapGenresOnMovies(result, state.genres);
                     dispatch(updateMovies(movies));
@@ -34,7 +34,7 @@ export const searchMovies = () => {
                     dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
                 }
             )
-            .catch((e) => {
+            .catch(e => {
                 dispatch(setError(e));
                 dispatch({ type: NAVIGATE_TO_SEARCH_RESULTS })
             });

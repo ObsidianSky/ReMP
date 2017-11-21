@@ -1,4 +1,4 @@
-import { searchReducer as sut, initialState } from './search.reducer';
+import { searchReducer as sut, initialSearchState as initialState } from './search.reducer';
 
 describe('search reducer', () => {
     let action;

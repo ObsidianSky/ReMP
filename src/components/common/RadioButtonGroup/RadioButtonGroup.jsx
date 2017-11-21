@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './RadioButtonGroup.scss'
+if (process.env.BROWSER) {
+	require('./RadioButtonGroup.scss');
+}
 
 import Button from '../Button/Button';
 

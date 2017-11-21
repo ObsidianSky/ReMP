@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './Header.scss'
+if (process.env.BROWSER) {
+	require('./Header.scss');
+}
 
 import TopBar from './TopBar/TopBar';
 import SearchForm from './SearchForm/SearchForm';

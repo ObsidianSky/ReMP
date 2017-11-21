@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import './TopBar.scss'
+if (process.env.BROWSER) {
+	require('./TopBar.scss');
+}
 import Logo from '../../common/Logo/Logo';
 import HomeButton from './HomeButton/HomeButton';
 

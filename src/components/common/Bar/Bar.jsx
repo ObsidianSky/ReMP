@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Bar.scss'
+if (process.env.BROWSER) {
+	require('./Bar.scss');
+}
 
 const Bar = ({ title, children }) => (
     <div className="bar">

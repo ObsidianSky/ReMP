@@ -2,7 +2,7 @@ import { REMOVE_MOVIE, SELECT_MOVIE, SORT_MOVIES, UPDATE_MOVIES, RESET_MOVIES, S
 import { sort } from '../services/sort.service';
 
 //TODO think about move selectedMovie into separate reducer
-export const initialState = {
+export const initialMovieState = {
     items: [],
     selectedMovie: null,
     selectedSortType: 'year',
@@ -12,7 +12,7 @@ export const initialState = {
     ],
 };
 
-export const moviesReducer = (state = initialState, action) => {
+export const moviesReducer = (state = initialMovieState, action) => {
     switch (action.type) {
         case SORT_MOVIES:
             return Object.assign({}, state, {
@@ -28,7 +28,7 @@ export const moviesReducer = (state = initialState, action) => {
         case SET_SEARCH_ERROR:
             return Object.assign({}, state, { items: [] });
         case RESET_MOVIES:
-            return Object.assign({}, initialState);
+            return Object.assign({}, initialMovieState);
         default:
             return state;
     }

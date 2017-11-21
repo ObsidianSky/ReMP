@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Movie.scss'
+
+if (process.env.BROWSER) {
+	require('./Movie.scss');
+}
 
 const Movie = ({ img, title, year, genre, director, rating, onMovieClick }) => (
     <div className="movie">
