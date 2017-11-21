@@ -1,16 +1,22 @@
 import MovieDetails from './components/Header/MovieDetails/MovieDetails';
 import SearchForm from './components/Header/SearchForm/SearchForm';
+import App from './App';
 
 const routes = [
     {
-        path: '/search',
-        component: SearchForm,
-        name: 'SearchForm'
-    },
-    {
-        path: '/film/:id',
-        component: MovieDetails,
-        name: 'MovieDetails'
+        path: '/',
+        component: App,
+        isExact: true,
+        routes: [
+            {
+                path: '/search',
+                component: SearchForm,
+            },
+            {
+                path: '/film/:id',
+                component: MovieDetails
+            }
+        ]
     }
 ];
 

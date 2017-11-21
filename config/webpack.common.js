@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, '../src'),
@@ -17,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
             },
@@ -40,11 +39,6 @@ module.exports = {
             'process.env': {
                 'BROWSER': JSON.stringify(true)
             }
-        }),
-        new HtmlPlugin({
-            inject: 'body',
-            filename: 'index.html',
-            template: path.resolve(__dirname, '../src/index.html')
         })
     ]
 };

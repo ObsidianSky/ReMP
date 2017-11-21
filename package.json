@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "webpack --config ./config/webpack.production.js -p",
-    "server": "nodemon server.js --exec babel-node",
+    "build::run": "npm run build && npm run server",
+    "server": "babel-node server.js",
+    "server::watch": "nodemon server.js --exec babel-node",
     "test::single": "jest --colors --verbose",
     "test::watch": "jest --watchAll --colors --verbose --bail",
     "test::update": "jest --u",

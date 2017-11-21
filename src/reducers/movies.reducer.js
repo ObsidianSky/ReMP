@@ -28,7 +28,7 @@ export const moviesReducer = (state = initialMovieState, action) => {
         case SET_SEARCH_ERROR:
             return Object.assign({}, state, { items: [] });
         case RESET_MOVIES:
-            return Object.assign({}, initialState);
+            return Object.assign({}, initialMovieState);
         default:
             return state;
     }
